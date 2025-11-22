@@ -7,23 +7,12 @@ interface ProjectProps {
   images: string[];
 }
 
-const Project: React.FC<ProjectProps> = ({
-  title,
-  description,
-  images,
-}) => {
+const Project: React.FC<ProjectProps> = ({ title, description, images }) => {
   return (
     <div className="flex flex-col gap-4">
       <DescriptionRow title={title} descriptionPrimary={description} />
       {images.map((image, index) => (
-        <Image
-          key={index}
-          src={image}
-          alt={title}
-          width="1600"
-          height="800"
-          className="rounded-md"
-        />
+        <Image key={index} src={image} alt={title} width="1600" height="800" className="rounded-md" />
       ))}
     </div>
   );
@@ -32,12 +21,10 @@ const Project: React.FC<ProjectProps> = ({
 export const Projects: React.FC = () => {
   return (
     <div className="flex-col">
-      <h2 className="mt-0 font-base font-semibold text-blue-600 dark:text-blue-400">
-        Recent Projects
-      </h2>
-      <div className="flex flex-col gap-12">
+      <h2 className="mt-0 font-base font-semibold text-blue-600 dark:text-blue-400">Recent Projects</h2>
+      <div className="flex flex-col gap-16">
         <Project
-          title="GitHub Copilot Chat"
+          title="GitHub Copilot"
           description="Copilot Chat, Inline Chat, and extensibility in VS Code"
           images={["/images/copilot-chat.png"]}
         />
@@ -57,14 +44,9 @@ export const Projects: React.FC = () => {
           images={["/images/vscode-profiles.png"]}
         />
         <Project
-          title="VS Code Website"
-          description="Refreshed VS Code website and docs"
-          images={["/images/vscode-website.png"]}
-        />
-        <Project
           title="Default Themes"
           description="Modernized, accessible, dark, light, and high contrast themes"
-          images={["/images/vscode-theme-dark.png", "/images/vscode-theme-light.png", '/images/vscode-light-hc-theme.png']}
+          images={["/images/vscode-theme-dark.png", "/images/vscode-theme-light.png"]}
         />
         <Project
           title="GitHub Pull Requests & Issues Extension"
@@ -75,11 +57,6 @@ export const Projects: React.FC = () => {
           title="Webview Toolkit for Visual Studio Code"
           description="A component library for building webview-based extensions in Visual Studio Code"
           images={["/images/vscode-webview-toolkit.png"]}
-        />
-        <Project
-          title="Product Insights"
-          description="Real-time cross-platform analytics SaaS app"
-          images={["/images/product-insights.png"]}
         />
         <Project
           title="Grid Playground"
