@@ -11,7 +11,7 @@ const experiences: ExperienceData[] = [
   {
     title: "Staff Product Designer, Copilot",
     company: "GitHub",
-    description: "2025 — Present",
+    description: "2025 - Present",
   },
   {
     title: "Principal Designer, VS Code",
