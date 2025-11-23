@@ -11,8 +11,7 @@ function Layout({ children, title, description }: LayoutProps): JSX.Element {
   const isDev = process.env.NODE_ENV === "development";
   const pageTitle = title || "David Dossett";
   const fullTitle = isDev ? `${pageTitle} — Dev` : pageTitle;
-  const pageDescription =
-    description || "Product designer at GitHub working on Copilot. Previously led design for VS Code at Microsoft.";
+  const pageDescription = description || "Product designer at GitHub";
   const siteUrl = "https://ddossett.com";
 
   return (
