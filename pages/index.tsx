@@ -4,18 +4,21 @@ import Link from "next/link";
 import { ExperienceList } from "../components/experience";
 import { Projects } from "../components/projects";
 
+const githubLink = (
+  <Link className="intro" href="https://github.com" target="blank">
+    GitHub
+  </Link>
+);
+
 const vsCodeLink = (
   <Link className="intro" href="https://code.visualstudio.com" target="blank">
     VS Code
   </Link>
 );
+
 const copilotLink = (
-  <Link
-    className="intro"
-    href="https://github.com/features/copilot"
-    target="blank"
-  >
-    GitHub Copilot Chat
+  <Link className="intro" href="https://github.com/features/copilot" target="blank">
+    Copilot
   </Link>
 );
 
@@ -24,13 +27,10 @@ export default function Home() {
     <Layout>
       <div className="py-16 max-w-3xl">
         <p className="intro">
-          Hi, I'm David. I'm a designer based in Seattle. I'm currently
-          leading design for {vsCodeLink} and building {copilotLink} at Microsoft.
+          Hi, I'm David. I'm a designer and developer based in Seattle. I'm currently working at {githubLink} working on{" "}
+          {copilotLink}.
         </p>
-        <p className="intro">
-          I've been at Microsoft since 2016. Before VS Code, I led design for
-          Customer Insights, a real-time analytics app and platform.
-        </p>
+        <p className="intro">Previously, I led design for {vsCodeLink} at Microsoft.</p>
       </div>
       <div className="flex flex-col gap-14">
         <Projects />
