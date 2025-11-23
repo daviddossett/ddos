@@ -9,7 +9,7 @@ function Layout({ children }: any): JSX.Element {
     <div className="max-w-[960px] mx-auto w-full px-4">
       <Head>
         <title>{title}</title>
-        <meta name="description" content="Product designer at Microsoft" />
+        <meta name="description" content="Product designer at GitHub" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
