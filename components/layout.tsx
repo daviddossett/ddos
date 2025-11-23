@@ -18,7 +18,6 @@ function Layout({ children, title, description }: LayoutProps): JSX.Element {
   return (
     <div className="max-w-[960px] mx-auto w-full px-4">
       <Head>
-        <html lang="en" />
         <title>{fullTitle}</title>
         <meta name="description" content={pageDescription} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
