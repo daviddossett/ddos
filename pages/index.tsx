@@ -25,17 +25,19 @@ const copilotLink = (
 export default function Home() {
   return (
     <Layout>
-      <div className="py-16 max-w-3xl">
-        <p className="intro">
-          Hi, I'm David. I'm a designer and okayish developer based in Seattle. I'm currently working at {githubLink}{" "}
-          working on {copilotLink}.
-        </p>
-        <p className="intro">Previously, I led design for {vsCodeLink} at Microsoft.</p>
-      </div>
-      <div className="flex flex-col gap-14">
-        <Projects />
-        <ExperienceList />
-      </div>
+      <main>
+        <div className="py-16 max-w-3xl">
+          <p className="intro">
+            Hi, I'm David. I'm a designer and okayish developer based in Seattle. I'm currently working at {githubLink}{" "}
+            working on {copilotLink}.
+          </p>
+          <p className="intro">Previously, I led design for {vsCodeLink} at Microsoft.</p>
+        </div>
+        <div className="flex flex-col gap-14">
+          <Projects />
+          <ExperienceList />
+        </div>
+      </main>
       <Footer />
     </Layout>
   );
