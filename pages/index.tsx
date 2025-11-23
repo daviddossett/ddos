@@ -10,15 +10,15 @@ const githubLink = (
   </Link>
 );
 
-const vsCodeLink = (
-  <Link className="intro" href="https://code.visualstudio.com" target="blank">
-    VS Code
-  </Link>
-);
-
 const copilotLink = (
   <Link className="intro" href="https://github.com/features/copilot" target="blank">
     Copilot
+  </Link>
+);
+
+const vsCodeLink = (
+  <Link className="intro" href="https://code.visualstudio.com" target="blank">
+    VS Code
   </Link>
 );
 
