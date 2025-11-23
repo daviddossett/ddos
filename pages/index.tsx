@@ -27,8 +27,8 @@ export default function Home() {
     <Layout>
       <div className="py-16 max-w-3xl">
         <p className="intro">
-          Hi, I'm David. I'm a designer and developer based in Seattle. I'm currently working at {githubLink} working on{" "}
-          {copilotLink}.
+          Hi, I'm David. I'm a designer and okayish developer based in Seattle. I'm currently working at {githubLink}{" "}
+          working on {copilotLink}.
         </p>
         <p className="intro">Previously, I led design for {vsCodeLink} at Microsoft.</p>
       </div>
