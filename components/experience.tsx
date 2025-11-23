@@ -9,9 +9,14 @@ interface ExperienceData {
 
 const experiences: ExperienceData[] = [
   {
+    title: "Staff Product Designer, Copilot",
+    company: "GitHub",
+    description: "2025 — Present",
+  },
+  {
     title: "Principal Designer, VS Code",
     company: "Microsoft",
-    description: "2024 — Present",
+    description: "2024",
   },
   {
     title: "Senior Designer, VS Code",
@@ -43,9 +48,7 @@ const experiences: ExperienceData[] = [
 export const ExperienceList: React.FC = () => {
   return (
     <div className="flex-col">
-      <h2 className="mt-0 font-base font-semibold text-blue-600 dark:text-blue-400">
-        Experience
-      </h2>
+      <h2 className="mt-0 font-base font-semibold text-blue-600 dark:text-blue-400">Experience</h2>
       <div className="flex flex-col gap-6">
         {experiences.map((experience, index) => (
           <DescriptionRow
