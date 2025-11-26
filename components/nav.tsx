@@ -32,7 +32,7 @@ function NavItem({ link }: { link: NavLink }) {
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 no-underline cursor-ne-resize"
         >
-          <span className="w-1 h-1 rounded-full shrink-0" />
+          <span className="w-1 h-1 shrink-0" />
           {link.label}
         </a>
       </li>
@@ -49,11 +49,9 @@ function NavItem({ link }: { link: NavLink }) {
             : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
         }`}
       >
-        <span
-          className={`w-1 h-1 rounded-full shrink-0 ${
-            isActive ? "bg-emerald-400 dark:bg-emerald-300" : ""
-          }`}
-        />
+        <span className={`w-2 text-xs shrink-0 ${isActive ? "text-emerald-400 dark:text-emerald-300" : "opacity-0"}`}>
+          ❯
+        </span>
         {link.label}
       </Link>
     </li>
