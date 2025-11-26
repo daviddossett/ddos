@@ -36,7 +36,7 @@
 
   p,
   a {
-    @apply text-[1rem] leading-7 mb-6;
+    @apply text-[1rem] leading-7;
   }
 
   a {
