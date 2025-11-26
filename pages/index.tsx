@@ -37,7 +37,7 @@ export default function Home() {
         </p>
 
         {/* Image placeholder */}
-        <div className="w-full h-96 bg-gray-200 dark:bg-gray-800 rounded-md"></div>
+        <div className="w-full h-96 bg-zinc-200 dark:bg-zinc-800 rounded-md"></div>
       </div>
     </Layout>
   );

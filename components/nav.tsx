@@ -35,7 +35,7 @@ export function Nav() {
               className={`relative group no-underline ${
                 isActive
                   ? "text-gray-900 dark:text-gray-100 font-medium"
-                  : "text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-100"
+                  : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
               }`}
             >
               {isActive ? (
