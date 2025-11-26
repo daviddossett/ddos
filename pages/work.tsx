@@ -2,12 +2,27 @@ import Layout from "../components/layout";
 
 export default function Work() {
   return (
-    <Layout title="Work — David Dossett">
+    <Layout title="Projects — David Dossett" description="A collection of my work and projects.">
       <div className="flex flex-col gap-6">
-        <p className="text-gray-900 dark:text-gray-100">Work page coming soon.</p>
+        <h1>Projects</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.
+        </p>
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+          aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        </p>
+        <div className="w-full h-96 bg-zinc-200 dark:bg-zinc-800 rounded-md"></div>
+        <p>
+          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+          dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit
+          amet.
         </p>
       </div>
     </Layout>
