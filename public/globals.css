@@ -24,26 +24,28 @@
   h2,
   h3 {
     @apply text-slate-900 dark:text-slate-300;
+    @apply tracking-[-0.4px];
+    @apply font-normal;
   }
 
   h1 {
-    @apply text-2xl font-bold leading-loose;
+    @apply text-3xl;
   }
 
   h2 {
-    @apply text-[1rem] font-medium mb-4 mt-8;
+    @apply text-2xl mb-4 mt-8;
   }
 
   h3 {
-    @apply text-[1.2rem] font-semibold mb-2;
+    @apply text-xl mb-2;
   }
 
   p {
-    @apply text-[1rem] leading-7;
+    @apply text-base leading-7;
   }
 
   a {
-    @apply text-[1rem] leading-7;
+    @apply text-base leading-7;
     @apply text-inherit;
     @apply underline decoration-dotted underline-offset-4 decoration-emerald-400 dark:decoration-emerald-300;
     @apply hover:text-gray-900 dark:hover:text-gray-100;

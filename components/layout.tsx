@@ -37,10 +37,10 @@ function Layout({ children, title, description }: LayoutProps): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-[100px_fit-content(280px)_1fr] md:gap-24 items-start">
+      <div className="grid grid-cols-1 gap-10 md:grid-cols-[auto_auto_1fr] md:gap-16 items-start">
         {/* Column 1: Branding */}
-        <h1 className="md:sticky md:top-20 flex justify-items-center gap-2 text-base font-normal dark:text-slate-400">
-          <Link className="text-base tracking-[-0.0125rem] text-slate-900 dark:text-slate-50 no-underline" href="/">
+        <h1 className="md:sticky md:top-20 text-base font-normal tracking-normal text-gray-900 dark:text-gray-100">
+          <Link className="no-underline" href="/">
             David Dossett
           </Link>
         </h1>

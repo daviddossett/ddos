@@ -1,15 +1,25 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState, useId } from "react";
 
 interface NavLink {
   label: string;
-  href: string;
+  href?: string;
   external?: boolean;
+  children?: NavLink[];
 }
 
 const mainLinks: NavLink[] = [
   { label: "Me", href: "/" },
-  { label: "Work", href: "/work" },
+  {
+    label: "Work",
+    children: [
+      { label: "GitHub", href: "/github" },
+      { label: "VS Code", href: "/vscode" },
+      { label: "Microsoft", href: "/microsoft" },
+      { label: "Side projects", href: "/side-projects" },
+    ],
+  },
 ];
 
 const socialLinks: NavLink[] = [
@@ -19,43 +29,25 @@ const socialLinks: NavLink[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/daviddossett/", external: true },
 ];
 
-export function Nav() {
+function NavItem({ link }: { link: NavLink }) {
   const router = useRouter();
+  const panelId = useId();
+  const hasChildren = link.children && link.children.length > 0;
 
-  return (
-    <nav className="flex flex-col gap-6">
-      <div className="flex flex-col">
-        {mainLinks.map((link) => {
-          const isActive = router.pathname === link.href;
+  // Check if any child is active (for parent items)
+  const isChildActive = hasChildren && link.children?.some((child) => child.href && router.pathname === child.href);
 
-          return (
-            <Link
-              key={link.label}
-              href={link.href}
-              className={`relative group no-underline ${
-                isActive
-                  ? "text-gray-900 dark:text-gray-100 font-medium"
-                  : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
-              }`}
-            >
-              {isActive ? (
-                <span className="absolute -left-4 text-3xl font-bold leading-3 text-emerald-400 dark:text-emerald-300">
-                  .
-                </span>
-              ) : (
-                <span className="absolute -left-4 text-3xl font-bold leading-3 text-gray-300 dark:text-gray-600 opacity-0 group-hover:opacity-100">
-                  .
-                </span>
-              )}
-              {link.label}
-            </Link>
-          );
-        })}
-      </div>
-      <div className="flex flex-col">
-        {socialLinks.map((link) => (
+  // Initialize expanded state based on whether a child is active
+  const [isExpanded, setIsExpanded] = useState(isChildActive);
+
+  // For items with href (leaf nodes)
+  if (link.href && !hasChildren) {
+    const isActive = router.pathname === link.href;
+
+    if (link.external) {
+      return (
+        <li>
           <a
-            key={link.label}
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
@@ -63,8 +55,70 @@ export function Nav() {
           >
             {link.label}
           </a>
+        </li>
+      );
+    }
+
+    return (
+      <li>
+        <Link
+          href={link.href}
+          className={`no-underline ${
+            isActive
+              ? "text-gray-900 dark:text-gray-100"
+              : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+          }`}
+        >
+          {link.label}
+        </Link>
+      </li>
+    );
+  }
+
+  // For items with children (expandable sections)
+  if (hasChildren) {
+    return (
+      <li>
+        <button
+          type="button"
+          aria-expanded={isExpanded}
+          aria-controls={panelId}
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="text-left bg-transparent border-none cursor-pointer p-0 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+        >
+          {link.label}
+        </button>
+        <div
+          id={panelId}
+          className="grid transition-[grid-template-rows] duration-200 ease-out"
+          style={{ gridTemplateRows: isExpanded ? "1fr" : "0fr" }}
+        >
+          <ul role="group" className="list-none pl-4 py-0.5 flex flex-col overflow-hidden">
+            {link.children?.map((child) => (
+              <NavItem key={child.label} link={child} />
+            ))}
+          </ul>
+        </div>
+      </li>
+    );
+  }
+
+  return null;
+}
+
+export function Nav() {
+  return (
+    <nav aria-label="Main navigation" className="flex flex-col gap-6">
+      <ul role="list" className="list-none p-0 m-0 flex flex-col">
+        {mainLinks.map((link) => (
+          <NavItem key={link.label} link={link} />
         ))}
-      </div>
+      </ul>
+      <ul role="list" className="list-none p-0 m-0 flex flex-col">
+        {socialLinks.map((link) => (
+          <NavItem key={link.label} link={link} />
+        ))}
+      </ul>
     </nav>
   );
 }
