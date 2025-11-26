@@ -39,7 +39,7 @@ function Layout({ children, title, description }: LayoutProps): JSX.Element {
 
       <div className="grid grid-cols-1 gap-10 md:grid-cols-[auto_auto_1fr] md:gap-16 items-start">
         {/* Column 1: Branding */}
-        <h1 className="md:sticky text-base font-normal tracking-normal text-gray-900 dark:text-gray-100">
+        <h1 className="md:sticky md:top-20 text-base font-normal tracking-normal text-gray-900 dark:text-gray-100">
           <Link className="no-underline" href="/">
             David Dossett
           </Link>
