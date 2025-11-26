@@ -84,7 +84,7 @@ function NavItem({ link }: { link: NavLink }) {
           aria-expanded={isExpanded}
           aria-controls={panelId}
           onClick={() => setIsExpanded(!isExpanded)}
-          className="text-left bg-transparent border-none cursor-pointer p-0 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+          className="text-left bg-transparent border-none cursor-pointer p-0 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 outline-none focus-visible:underline focus-visible:decoration-solid focus-visible:underline-offset-4 focus-visible:decoration-emerald-400 dark:focus-visible:decoration-emerald-300"
         >
           {link.label}
         </button>

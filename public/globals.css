@@ -49,6 +49,11 @@
     @apply text-inherit;
     @apply underline decoration-dotted underline-offset-4 decoration-emerald-400 dark:decoration-emerald-300;
     @apply hover:text-gray-900 dark:hover:text-gray-100;
+    @apply outline-none;
+  }
+
+  a:focus-visible {
+    @apply decoration-solid decoration-emerald-400 dark:decoration-emerald-300;
   }
 
   a:active {
@@ -57,6 +62,10 @@
 
   a.no-underline {
     text-decoration: none;
+  }
+
+  a.no-underline:focus-visible {
+    @apply underline decoration-solid underline-offset-4 decoration-emerald-400 dark:decoration-emerald-300;
   }
 }
 
