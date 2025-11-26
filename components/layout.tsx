@@ -17,7 +17,7 @@ function Layout({ children, title, description }: LayoutProps): JSX.Element {
   const siteUrl = "https://ddossett.com";
 
   return (
-    <div className="min-h-screen w-full px-12 py-12 md:px-20 md:py-24">
+    <div className="w-full px-12 py-12 md:px-20 md:py-20">
       <Head>
         <title>{fullTitle}</title>
         <meta name="description" content={pageDescription} />
@@ -37,16 +37,18 @@ function Layout({ children, title, description }: LayoutProps): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-[100px_fit-content(280px)_1fr] md:gap-16 items-start">
+      <div className="grid grid-cols-1 gap-10 md:grid-cols-[100px_fit-content(280px)_1fr] md:gap-24 items-start">
         {/* Column 1: Branding */}
-        <h1 className="flex justify-items-center gap-2 text-base font-normal dark:text-slate-400">
-          <Link className="text-base tracking-[-0.0125rem] text-slate-900 dark:text-slate-50" href="/">
+        <h1 className="md:sticky md:top-20 flex justify-items-center gap-2 text-base font-normal dark:text-slate-400">
+          <Link className="text-base tracking-[-0.0125rem] text-slate-900 dark:text-slate-50 no-underline" href="/">
             David Dossett
           </Link>
         </h1>
 
         {/* Column 2: Navigation */}
-        <Nav />
+        <div className="md:sticky md:top-20">
+          <Nav />
+        </div>
 
         {/* Column 3: Content */}
         <main className="flex justify-center">

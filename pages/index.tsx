@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <Layout>
       <div className="flex flex-col gap-6">
-        <p className="text-gray-900 dark:text-gray-100">
+        <p>
           Hi, I'm David. I'm a designer and okayish developer based in Seattle. I'm currently working at{" "}
           <Link href="https://github.com" target="_blank">
             GitHub
@@ -16,7 +16,7 @@ export default function Home() {
           </Link>
           .
         </p>
-        <p className="text-gray-900 dark:text-gray-100">
+        <p>
           Previously, I led design for{" "}
           <Link href="https://code.visualstudio.com" target="_blank">
             VS Code
@@ -35,6 +35,9 @@ export default function Home() {
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
           aperiam, eaque ipsa quae ab illo inventore veritatis.
         </p>
+
+        {/* Image placeholder */}
+        <div className="w-full h-96 bg-gray-200 dark:bg-gray-800 rounded-md"></div>
       </div>
     </Layout>
   );
