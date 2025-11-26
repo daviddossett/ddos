@@ -12,7 +12,7 @@ const Project: React.FC<ProjectProps> = ({ title, description, images }) => {
     <div className="flex flex-col gap-4">
       <DescriptionRow title={title} descriptionPrimary={description} />
       {images.map((image, index) => (
-        <Image key={index} src={image} alt={title} width="1600" height="800" className="rounded-md" />
+        <Image key={index} src={image} alt={title} width="1600" height="800" className="rounded-sm" />
       ))}
     </div>
   );
@@ -21,7 +21,7 @@ const Project: React.FC<ProjectProps> = ({ title, description, images }) => {
 export const Projects: React.FC = () => {
   return (
     <div className="flex-col">
-      <h2 className="mt-0 font-base font-semibold text-blue-600 dark:text-blue-400">Recent Projects</h2>
+      <h2 className="mt-0 font-base  text-blue-600 dark:text-blue-400">Recent Projects</h2>
       <div className="flex flex-col gap-16">
         <Project
           title="GitHub Copilot"

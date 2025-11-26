@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <Layout>
       <main>
-        <div className="py-16 max-w-3xl flex flex-col gap-8">
+        <div className="py-24 max-w-3xl flex flex-col gap-8">
           <p className="intro">
             Hi, I'm David. I'm a designer and okayish developer based in Seattle. I'm currently working at {githubLink}{" "}
             building {copilotLink}.
