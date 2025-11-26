@@ -32,7 +32,7 @@ function NavItem({ link }: { link: NavLink }) {
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 no-underline cursor-ne-resize"
         >
-          <span className="w-1 h-1 shrink-0" />
+          <span className="w-2 text-xs shrink-0 opacity-0">❯</span>
           {link.label}
         </a>
       </li>
