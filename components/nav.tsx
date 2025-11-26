@@ -29,7 +29,7 @@ const socialLinks: NavLink[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/daviddossett/", external: true },
 ];
 
-function NavItem({ link }: { link: NavLink }) {
+function NavItem({ link, isHidden = false }: { link: NavLink; isHidden?: boolean }) {
   const router = useRouter();
   const panelId = useId();
   const hasChildren = link.children && link.children.length > 0;
@@ -51,6 +51,7 @@ function NavItem({ link }: { link: NavLink }) {
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
+            tabIndex={isHidden ? -1 : undefined}
             className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 no-underline cursor-ne-resize"
           >
             {link.label}
@@ -63,6 +64,7 @@ function NavItem({ link }: { link: NavLink }) {
       <li>
         <Link
           href={link.href}
+          tabIndex={isHidden ? -1 : undefined}
           className={`no-underline ${
             isActive
               ? "text-gray-900 dark:text-gray-100"
@@ -93,9 +95,9 @@ function NavItem({ link }: { link: NavLink }) {
           className="grid transition-[grid-template-rows] duration-200 ease-out"
           style={{ gridTemplateRows: isExpanded ? "1fr" : "0fr" }}
         >
-          <ul role="group" className="list-none pl-4 py-0.5 flex flex-col overflow-hidden">
+          <ul role="group" className="list-none pl-4 flex flex-col min-h-0 overflow-hidden">
             {link.children?.map((child) => (
-              <NavItem key={child.label} link={child} />
+              <NavItem key={child.label} link={child} isHidden={!isExpanded} />
             ))}
           </ul>
         </div>
