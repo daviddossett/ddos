@@ -1,44 +1,41 @@
 import Layout from "../components/layout";
-import { Footer } from "../components/footer";
 import Link from "next/link";
-import { ExperienceList } from "../components/experience";
-import { Projects } from "../components/projects";
-
-const githubLink = (
-  <Link className="intro" href="https://github.com" target="blank">
-    GitHub
-  </Link>
-);
-
-const copilotLink = (
-  <Link className="intro" href="https://github.com/features/copilot" target="blank">
-    Copilot
-  </Link>
-);
-
-const vsCodeLink = (
-  <Link className="intro" href="https://code.visualstudio.com" target="blank">
-    VS Code
-  </Link>
-);
 
 export default function Home() {
   return (
     <Layout>
-      <main>
-        <div className="py-24 max-w-3xl flex flex-col gap-8">
-          <p className="intro">
-            Hi, I'm David. I'm a designer and okayish developer based in Seattle. I'm currently working at {githubLink}{" "}
-            building {copilotLink}.
-          </p>
-          <p className="intro">Previously, I led design for {vsCodeLink} at Microsoft.</p>
-        </div>
-        <div className="flex flex-col gap-14">
-          <Projects />
-          <ExperienceList />
-        </div>
-      </main>
-      <Footer />
+      <div className="flex flex-col gap-6">
+        <p className="text-gray-900 dark:text-gray-100">
+          Hi, I'm David. I'm a designer and okayish developer based in Seattle. I'm currently working at{" "}
+          <Link href="https://github.com" target="_blank">
+            GitHub
+          </Link>{" "}
+          building{" "}
+          <Link href="https://github.com/features/copilot" target="_blank">
+            Copilot
+          </Link>
+          .
+        </p>
+        <p className="text-gray-900 dark:text-gray-100">
+          Previously, I led design for{" "}
+          <Link href="https://code.visualstudio.com" target="_blank">
+            VS Code
+          </Link>{" "}
+          at Microsoft.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+        </p>
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+          aperiam, eaque ipsa quae ab illo inventore veritatis.
+        </p>
+      </div>
     </Layout>
   );
 }
