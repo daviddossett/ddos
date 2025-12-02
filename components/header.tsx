@@ -8,7 +8,7 @@ export const Header: React.FC = () => {
           David Dossett
         </Link>
         <span className="text-2xl font-bold leading-3 text-blue-400">.</span>
-        Seattle
+        Seattle, WA
       </h1>
     </header>
   );
