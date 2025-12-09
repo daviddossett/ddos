@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const Footer: React.FC = () => {
   return (
-    <div className="flex space-x-4 gap-1 py-16">
+    <div className="flex space-x-4 gap-2 py-16">
       <Link href="https://twitter.com/david_dossett" target="blank">
         Twitter
       </Link>
