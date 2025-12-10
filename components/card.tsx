@@ -8,7 +8,7 @@ interface ICard {
   image: StaticImageData;
 }
 
-function Card({ title, desc, to, image }: ICard): JSX.Element {
+function Card({ title, desc, to, image }: ICard) {
   return (
     <Link href={to}>
       <div className='py-3 md:px-6 md:py-5 md:hover:bg-[#64646426] rounded-xl flex gap-4 items-center'>
