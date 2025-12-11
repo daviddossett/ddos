@@ -14,42 +14,20 @@ A personal portfolio website built with Next.js, TypeScript, and Tailwind CSS.
 Before you begin, ensure you have the following installed:
 
 - **Node.js** (v18 or higher recommended)
-- **npm** or **yarn** or **bun** package manager
+- **npm** package manager
 
 ## Getting Started
 
-### 1. Clone the repository
+### 1. Install dependencies
 
-```bash
-git clone <repository-url>
-cd daviddossett
-```
-
-### 2. Install dependencies
-
-Using npm:
 ```bash
 npm install
 ```
 
-Using yarn:
-```bash
-yarn install
-```
-
-Using bun:
-```bash
-bun install
-```
-
-### 3. Run the development server
+### 2. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
