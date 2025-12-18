@@ -14,3 +14,5 @@ export const Header: React.FC = React.memo(() => {
     </header>
   );
 });
+
+Header.displayName = 'Header';

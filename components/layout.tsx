@@ -41,4 +41,6 @@ const Layout: React.FC<LayoutProps> = React.memo(({ children, title, description
   );
 });
 
+Layout.displayName = 'Layout';
+
 export default Layout;

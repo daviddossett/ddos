@@ -62,3 +62,5 @@ export const ExperienceList: React.FC = React.memo(() => {
     </div>
   );
 });
+
+ExperienceList.displayName = 'ExperienceList';

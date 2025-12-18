@@ -23,4 +23,6 @@ const Card: React.FC<ICard> = React.memo(({ title, desc, to, image }) => {
   );
 });
 
+Card.displayName = 'Card';
+
 export default Card;

@@ -28,3 +28,5 @@ export const DescriptionRow: React.FC<DescriptionRowProps> = React.memo(({
     </div>
   );
 });
+
+DescriptionRow.displayName = 'DescriptionRow';

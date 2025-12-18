@@ -28,6 +28,8 @@ const Project: React.FC<ProjectProps> = React.memo(({ title, description, images
   );
 });
 
+Project.displayName = 'Project';
+
 export const Projects: React.FC = () => {
   return (
     <div className="flex-col">
