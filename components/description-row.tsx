@@ -6,7 +6,7 @@ interface DescriptionRowProps {
   descriptionSecondary?: string;
 }
 
-export const DescriptionRow: React.FC<DescriptionRowProps> = ({
+export const DescriptionRow: React.FC<DescriptionRowProps> = React.memo(({
   title,
   descriptionPrimary,
   descriptionSecondary,
@@ -27,4 +27,4 @@ export const DescriptionRow: React.FC<DescriptionRowProps> = ({
       </p>
     </div>
   );
-};
+});

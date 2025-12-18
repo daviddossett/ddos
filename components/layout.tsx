@@ -1,4 +1,5 @@
 import Head from "next/head";
+import React from "react";
 import { Header } from "./header";
 
 interface LayoutProps {
@@ -7,7 +8,7 @@ interface LayoutProps {
   description?: string;
 }
 
-function Layout({ children, title, description }: LayoutProps): JSX.Element {
+const Layout: React.FC<LayoutProps> = React.memo(({ children, title, description }) => {
   const isDev = process.env.NODE_ENV === "development";
   const pageTitle = title || "David Dossett";
   const fullTitle = isDev ? `${pageTitle} — Dev` : pageTitle;
@@ -38,6 +39,6 @@ function Layout({ children, title, description }: LayoutProps): JSX.Element {
       {children}
     </div>
   );
-}
+});
 
 export default Layout;

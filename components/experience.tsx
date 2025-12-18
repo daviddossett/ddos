@@ -45,7 +45,7 @@ const experiences: ExperienceData[] = [
   },
 ];
 
-export const ExperienceList: React.FC = () => {
+export const ExperienceList: React.FC = React.memo(() => {
   return (
     <div className="flex-col">
       <h2 className="mt-0 font-base font-semibold text-blue-600 dark:text-blue-400">Experience</h2>
@@ -61,4 +61,4 @@ export const ExperienceList: React.FC = () => {
       </div>
     </div>
   );
-};
+});

@@ -1,6 +1,7 @@
 import Link from "next/link";
+import React from "react";
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC = React.memo(() => {
   return (
     <div className="flex space-x-4 gap-1 py-16">
       <Link href="https://twitter.com/david_dossett" target="blank">
@@ -14,4 +15,4 @@ export const Footer: React.FC = () => {
       </Link>
     </div>
   );
-};
+});

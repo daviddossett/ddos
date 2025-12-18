@@ -1,8 +1,15 @@
 import Layout from "../components/layout";
 import { Footer } from "../components/footer";
 import Link from "next/link";
-import { ExperienceList } from "../components/experience";
-import { Projects } from "../components/projects";
+import dynamic from "next/dynamic";
+
+const ExperienceList = dynamic(() => import("../components/experience").then(mod => ({ default: mod.ExperienceList })), {
+  loading: () => <div>Loading...</div>,
+});
+
+const Projects = dynamic(() => import("../components/projects").then(mod => ({ default: mod.Projects })), {
+  loading: () => <div>Loading...</div>,
+});
 
 const githubLink = (
   <Link className="intro" href="https://github.com" target="blank">

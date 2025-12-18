@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
+import React from 'react';
 
 interface ICard {
   title: string;
@@ -8,7 +9,7 @@ interface ICard {
   image: StaticImageData;
 }
 
-function Card({ title, desc, to, image }: ICard): JSX.Element {
+const Card: React.FC<ICard> = React.memo(({ title, desc, to, image }) => {
   return (
     <Link href={to}>
       <div className='py-3 md:px-6 md:py-5 md:hover:bg-[#64646426] rounded-xl flex gap-4 items-center'>
@@ -20,6 +21,6 @@ function Card({ title, desc, to, image }: ICard): JSX.Element {
       </div>
     </Link>
   );
-}
+});
 
 export default Card;

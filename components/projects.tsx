@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 import { DescriptionRow } from "./description-row";
 
 interface ProjectProps {
@@ -7,16 +8,25 @@ interface ProjectProps {
   images: string[];
 }
 
-const Project: React.FC<ProjectProps> = ({ title, description, images }) => {
+const Project: React.FC<ProjectProps> = React.memo(({ title, description, images }) => {
   return (
     <div className="flex flex-col gap-4">
       <DescriptionRow title={title} descriptionPrimary={description} />
       {images.map((image, index) => (
-        <Image key={index} src={image} alt={title} width="1600" height="800" className="rounded-sm" />
+        <Image 
+          key={index} 
+          src={image} 
+          alt={title} 
+          width="1600" 
+          height="800" 
+          className="rounded-sm"
+          loading={index > 0 ? "lazy" : "eager"}
+          priority={index === 0}
+        />
       ))}
     </div>
   );
-};
+});
 
 export const Projects: React.FC = () => {
   return (

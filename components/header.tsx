@@ -1,6 +1,7 @@
 import Link from "next/link";
+import React from "react";
 
-export const Header: React.FC = () => {
+export const Header: React.FC = React.memo(() => {
   return (
     <header className="flex justify-between items-center pt-8">
       <h1 className="flex justify-items-center gap-2 text-base font-normal dark:text-slate-400">
@@ -12,4 +13,4 @@ export const Header: React.FC = () => {
       </h1>
     </header>
   );
-};
+});

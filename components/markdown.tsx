@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Markdown from "react-markdown";
 
 interface MarkdownRendererProps {
@@ -22,15 +22,14 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ path }) => {
     fetchData();
   }, [path]);
 
-  return (
-    <Markdown
-      components={{
-        a: ({ node, ...props }) => (
-          <a target="_blank" rel="noopener noreferrer" {...props} />
-        ),
-      }}
-    >
-      {content}
-    </Markdown>
+  const markdownComponents = useMemo(
+    () => ({
+      a: ({ node, ...props }: any) => (
+        <a target="_blank" rel="noopener noreferrer" {...props} />
+      ),
+    }),
+    []
   );
+
+  return <Markdown components={markdownComponents}>{content}</Markdown>;
 };
