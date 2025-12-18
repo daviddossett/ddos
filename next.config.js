@@ -1,5 +1,9 @@
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
@@ -13,3 +17,5 @@ module.exports = {
   // Production source maps for debugging
   productionBrowserSourceMaps: false,
 };
+
+module.exports = withBundleAnalyzer(nextConfig);
