@@ -1,26 +1,7 @@
 import Layout from "../components/layout";
 import { Footer } from "../components/footer";
-import Link from "next/link";
 import { ExperienceList } from "../components/experience";
 import { Projects } from "../components/projects";
-
-const githubLink = (
-  <Link className="intro" href="https://github.com" target="blank">
-    GitHub
-  </Link>
-);
-
-const copilotLink = (
-  <Link className="intro" href="https://github.com/features/copilot" target="blank">
-    Copilot
-  </Link>
-);
-
-const vsCodeLink = (
-  <Link className="intro" href="https://code.visualstudio.com" target="blank">
-    VS Code
-  </Link>
-);
 
 export default function Home() {
   return (
@@ -28,10 +9,12 @@ export default function Home() {
       <main>
         <div className="py-24 max-w-3xl flex flex-col gap-8">
           <p className="intro">
-            Hi, I'm David. I'm a designer and okayish developer based in Seattle. I'm currently working at {githubLink}{" "}
-            building {copilotLink}.
+            I once taught a mass of penguins to form a conga line across Antarctica. Now I spend my days
+            collecting vintage doorbells and perfecting the art of competitive cloud watching.
           </p>
-          <p className="intro">Previously, I led design for {vsCodeLink} at Microsoft.</p>
+          <p className="intro">
+            My sourdough starter has its own passport and a better social life than me.
+          </p>
         </div>
         <div className="flex flex-col gap-14">
           <Projects />
