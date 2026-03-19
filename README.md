@@ -1,1 +1,1 @@
-This is my website.
+This is my website. Built with Next.js and Tailwind CSS.
