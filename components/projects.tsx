@@ -21,7 +21,7 @@ const Project: React.FC<ProjectProps> = ({ title, description, images }) => {
 export const Projects: React.FC = () => {
   return (
     <div className="flex-col">
-      <h2 className="mt-0 font-base  text-blue-600 dark:text-blue-400">Recent Projects</h2>
+      <h2 className="mt-0 font-base text-theme-accent">Recent Projects</h2>
       <div className="flex flex-col gap-16">
         <Project
           title="GitHub Copilot"
