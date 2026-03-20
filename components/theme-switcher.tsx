@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTheme, Theme } from "./theme-provider";
 
 const SunIcon = () => (
@@ -48,13 +49,26 @@ export const ThemeSwitcher: React.FC = () => {
   }
 
   return (
-    <button
+    <motion.button
       onClick={cycleTheme}
       className="theme-switcher"
       aria-label={`Theme: ${currentTheme.label}. Click to switch.`}
       title={currentTheme.label}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
     >
-      {currentTheme.icon}
-    </button>
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={theme}
+          initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
+          animate={{ rotate: 0, opacity: 1, scale: 1 }}
+          exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
+          transition={{ duration: 0.15 }}
+          style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+        >
+          {currentTheme.icon}
+        </motion.span>
+      </AnimatePresence>
+    </motion.button>
   );
 };

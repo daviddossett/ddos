@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { DescriptionRow } from "./description-row";
 
 interface ExperienceData {
@@ -45,20 +46,43 @@ const experiences: ExperienceData[] = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.06 },
+  },
+} as const;
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -10 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { type: "spring" as const, stiffness: 300, damping: 25 },
+  },
+};
+
 export const ExperienceList: React.FC = () => {
   return (
     <div className="flex-col">
       <h2 className="mt-0 font-base font-semibold text-theme-accent">Experience</h2>
-      <div className="flex flex-col gap-6">
+      <motion.div
+        className="flex flex-col gap-6"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      >
         {experiences.map((experience, index) => (
-          <DescriptionRow
-            key={index}
-            title={experience.title}
-            descriptionPrimary={experience.company}
-            descriptionSecondary={experience.description}
-          />
+          <motion.div key={index} variants={itemVariants}>
+            <DescriptionRow
+              title={experience.title}
+              descriptionPrimary={experience.company}
+              descriptionSecondary={experience.description}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

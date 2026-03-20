@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 interface DescriptionRowProps {
   title: string;
@@ -12,7 +13,10 @@ export const DescriptionRow: React.FC<DescriptionRowProps> = ({
   descriptionSecondary,
 }) => {
   return (
-    <div>
+    <motion.div
+      whileHover={{ x: 4 }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+    >
       <h3 className="mb-1">{title}</h3>
       <p className="flex flex-row gap-2 mb-0 text-theme-muted">
         {descriptionPrimary}
@@ -25,6 +29,6 @@ export const DescriptionRow: React.FC<DescriptionRowProps> = ({
           </>
         )}
       </p>
-    </div>
+    </motion.div>
   );
 };

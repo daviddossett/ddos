@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ThemeSwitcher } from "./theme-switcher";
+import { MotionToggle } from "./motion-toggle";
 
 export const Header: React.FC = () => {
   return (
@@ -11,7 +12,10 @@ export const Header: React.FC = () => {
         <span className="text-2xl font-bold leading-3 text-theme-dot">.</span>
         Seattle, WA
       </h1>
-      <ThemeSwitcher />
+      <div className="flex items-center gap-1">
+        <MotionToggle />
+        <ThemeSwitcher />
+      </div>
     </header>
   );
 };
