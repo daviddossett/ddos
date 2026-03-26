@@ -33,6 +33,11 @@ function Layout({ children, title, description }: LayoutProps): JSX.Element {
         <meta name="twitter:description" content={pageDescription} />
 
         <link rel="icon" href="/favicon.ico" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem("theme")==="hc"){document.documentElement.setAttribute("data-theme","hc")}}catch(e){}`,
+          }}
+        />
       </Head>
       <Header />
       {children}

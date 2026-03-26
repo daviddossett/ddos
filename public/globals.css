@@ -55,3 +55,80 @@
   line-height: 2.2rem;
   letter-spacing: -.0125rem;
 }
+
+/* Theme toggle button */
+.hc-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  border: 1.5px solid;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: all 150ms;
+  text-decoration: none;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.hc-toggle:hover {
+  @apply bg-slate-100 dark:bg-gray-800;
+}
+
+/* High Contrast Theme */
+[data-theme="hc"] body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="hc"] h1,
+[data-theme="hc"] h2,
+[data-theme="hc"] h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="hc"] h2 {
+  color: #ffff00 !important;
+}
+
+[data-theme="hc"] p,
+[data-theme="hc"] span {
+  color: #ffffff !important;
+}
+
+[data-theme="hc"] a {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+  background-color: transparent !important;
+}
+
+[data-theme="hc"] a:hover,
+[data-theme="hc"] a:focus-visible {
+  color: #00e5ff !important;
+  background-color: transparent !important;
+  outline: 2px solid #ffff00;
+  outline-offset: 2px;
+}
+
+[data-theme="hc"] ::selection {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+}
+
+[data-theme="hc"] img {
+  outline: 2px solid #ffffff;
+}
+
+[data-theme="hc"] .hc-toggle {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+  border-color: #ffff00 !important;
+}
+
+[data-theme="hc"] .hc-toggle:hover {
+  background-color: #00e5ff !important;
+  border-color: #00e5ff !important;
+}

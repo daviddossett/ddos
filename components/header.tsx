@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ThemeToggle } from "./theme-toggle";
 
 export const Header: React.FC = () => {
   return (
@@ -10,6 +11,7 @@ export const Header: React.FC = () => {
         <span className="text-2xl font-bold leading-3 text-blue-400">.</span>
         Seattle, WA
       </h1>
+      <ThemeToggle />
     </header>
   );
 };
