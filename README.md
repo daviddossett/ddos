@@ -1,1 +1,1 @@
-This is my website.
+This is my website, built with Next.js.
