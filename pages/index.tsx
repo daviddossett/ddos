@@ -5,19 +5,19 @@ import { ExperienceList } from "../components/experience";
 import { Projects } from "../components/projects";
 
 const githubLink = (
-  <Link className="intro" href="https://github.com" target="blank">
+  <Link className="intro" href="https://github.com" target="_blank" rel="noopener noreferrer">
     GitHub
   </Link>
 );
 
 const copilotLink = (
-  <Link className="intro" href="https://github.com/features/copilot" target="blank">
+  <Link className="intro" href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer">
     Copilot
   </Link>
 );
 
 const vsCodeLink = (
-  <Link className="intro" href="https://code.visualstudio.com" target="blank">
+  <Link className="intro" href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer">
     VS Code
   </Link>
 );
