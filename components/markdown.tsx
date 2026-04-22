@@ -6,27 +6,33 @@ interface MarkdownRendererProps {
 }
 
 export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ path }) => {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState<string>("");
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchData = async () => {
       try {
-        const res = await fetch(path);
+        const res = await fetch(path, { signal: controller.signal });
         const text = await res.text();
         setContent(text);
       } catch (error) {
-        console.error("Error fetching markdown content:", error);
+        if ((error as Error).name !== "AbortError") {
+          console.error("Error fetching markdown content:", error);
+        }
       }
     };
 
     fetchData();
+
+    return () => controller.abort();
   }, [path]);
 
   return (
     <Markdown
       components={{
         a: ({ node, ...props }) => (
-          <a target="_blank" rel="noopener noreferrer" {...props} />
+          <a target="_blank" rel="noopener noreferrer nofollow" {...props} />
         ),
       }}
     >
