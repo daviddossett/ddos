@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+// test change
 export const Footer: React.FC = () => {
   return (
     <div className="flex space-x-4 gap-1 py-16">
