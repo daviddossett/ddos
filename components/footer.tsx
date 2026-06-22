@@ -25,6 +25,13 @@ export const Footer: React.FC = () => {
       >
         LinkedIn
       </Link>
+      <Link
+        href="https://www.random.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Random
+      </Link>
     </div>
   );
 };
