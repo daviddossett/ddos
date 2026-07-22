@@ -38,33 +38,28 @@ export const Projects: React.FC = () => {
       <ul className={`${styles.list} entry-list`}>
         <Project
           title="GitHub Copilot app"
-          description="A native desktop home for agent-driven development"
+          description="Parallel agentic coding with native GitHub context"
           href="https://github.com/features/ai/github-app"
         />
         <Project
           title="GitHub Copilot CLI"
-          description="A coding agent built for the terminal"
+          description="Coding agent built for the terminal"
           href="https://github.com/features/copilot/cli"
         />
         <Project
-          title="Ace"
+          title="Ace GitHub"
           description="Multiplayer agentic coding with your team"
           href="https://githubnext.com/talks/one-developer-two-dozen-agents-zero-alignment/"
         />
         <Project
           title="GitHub Models"
-          description="Compare and experiment with leading AI models"
+          description="Evaluate and improve your LLM prompts"
           href="https://github.com/features/models"
         />
         <Project
           title="GitHub Spark"
-          description="Build and ship full-stack apps with natural language"
+          description="Build and ship full-stack apps"
           href="https://github.com/features/spark"
-        />
-        <Project
-          title="GitHub Copilot"
-          description="AI-assisted development across GitHub and the editor"
-          href="https://github.com/features/copilot"
         />
         <Project
           title="VS Code"
