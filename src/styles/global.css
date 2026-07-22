@@ -227,6 +227,30 @@ a:focus-visible {
   padding-bottom: 1rem;
 }
 
+.not-found {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.not-found h1 {
+  margin: 0;
+  padding-right: 1.25rem;
+  border-right: 1px solid var(--quaternary);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
+.not-found p {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--muted);
+}
+
 @media (min-width: 40rem) {
   .site-shell {
     padding-top: 8rem;
