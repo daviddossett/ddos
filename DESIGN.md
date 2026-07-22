@@ -29,7 +29,7 @@ typography:
     fontWeight: 500
     lineHeight: 1.5
 rounded:
-  interactive: "6px"
+  interactive: "8px"
 spacing:
   xs: "8px"
   sm: "12px"
@@ -112,7 +112,7 @@ The system is flat. Depth comes from tonal hover feedback and generous separatio
 ## 5. Components
 
 ### Cards / Containers
-- **Corner Style:** Small interactive radius (6px), only on linked rows.
+- **Corner Style:** Small interactive radius (8px), only on linked rows.
 - **Background:** Transparent at rest, quiet tonal fill on hover.
 - **Shadow Strategy:** None.
 - **Border:** None.
