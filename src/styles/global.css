@@ -152,6 +152,10 @@ a:focus-visible {
   text-wrap: pretty;
 }
 
+.intro-phrase {
+  white-space: nowrap;
+}
+
 .footer-link {
   color: var(--metadata);
 }
