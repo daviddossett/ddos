@@ -1,0 +1,66 @@
+---
+interface Project {
+  title: string;
+  description: string;
+  href: string;
+}
+
+const projects: Project[] = [
+  {
+    title: "GitHub Copilot app",
+    description: "A native desktop home for agent-driven development",
+    href: "https://github.com/features/ai/github-app",
+  },
+  {
+    title: "GitHub Copilot CLI",
+    description: "A coding agent built for the terminal",
+    href: "https://github.com/features/copilot/cli",
+  },
+  {
+    title: "Ace",
+    description: "Multiplayer agentic coding with your team",
+    href: "https://githubnext.com/talks/one-developer-two-dozen-agents-zero-alignment/",
+  },
+  {
+    title: "GitHub Models",
+    description: "Compare and experiment with leading AI models",
+    href: "https://github.com/features/models",
+  },
+  {
+    title: "GitHub Spark",
+    description: "Build and ship full-stack apps with natural language",
+    href: "https://github.com/features/spark",
+  },
+  {
+    title: "GitHub Copilot",
+    description: "AI-assisted development across GitHub and the editor",
+    href: "https://github.com/features/copilot",
+  },
+  {
+    title: "VS Code",
+    description: "The open source AI code editor",
+    href: "https://code.visualstudio.com/",
+  },
+];
+---
+
+<section class="content-section" aria-labelledby="projects-heading">
+  <h2 id="projects-heading" class="section-title">Projects</h2>
+  <ul class="entry-list">
+    {
+      projects.map(({ title, description, href }) => (
+        <li>
+          <a
+            class="entry entry-row entry-link"
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="entry-title">{title}</span>
+            <span class="entry-description">{description}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>

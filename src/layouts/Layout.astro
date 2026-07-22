@@ -1,0 +1,46 @@
+---
+import Header from "../components/Header.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "David Dossett",
+  description = "Product designer at GitHub",
+} = Astro.props;
+const fullTitle = import.meta.env.DEV ? `${title} (Dev)` : title;
+const pageUrl = new URL(
+  Astro.url.pathname,
+  Astro.site ?? Astro.url.origin,
+).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <Header />
+      <slot />
+    </div>
+  </body>
+</html>

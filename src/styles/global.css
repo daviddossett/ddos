@@ -1,5 +1,3 @@
-@import "tailwindcss";
-
 @font-face {
   font-family: "Sans";
   src: url("/fonts/InterVariable.woff2") format("woff2");
@@ -81,9 +79,9 @@ a:hover {
 }
 
 a:focus-visible {
+  border-radius: 2px;
   outline: 2px solid var(--muted);
   outline-offset: 2px;
-  border-radius: 2px;
 }
 
 .site-shell {
@@ -102,6 +100,7 @@ a:focus-visible {
 }
 
 .identity-avatar {
+  display: block;
   width: 3rem;
   height: 3rem;
   margin-bottom: 2rem;
@@ -142,8 +141,7 @@ a:focus-visible {
   line-height: 1.65;
 }
 
-.intro-copy p,
-.site-footer p {
+.intro-copy p {
   margin: 0;
   text-wrap: pretty;
 }
@@ -193,6 +191,13 @@ a:focus-visible {
   min-width: 0;
 }
 
+.entry-row {
+  min-height: 3rem;
+  margin-inline: -0.75rem;
+  padding-inline: 0.75rem;
+  line-height: 1.5rem;
+}
+
 .entry-link {
   border-radius: 0.5rem;
   text-decoration: none;
@@ -214,6 +219,14 @@ a:focus-visible {
   text-wrap: pretty;
 }
 
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  row-gap: 0.75rem;
+  padding-bottom: 1rem;
+}
+
 @media (min-width: 40rem) {
   .site-shell {
     padding-top: 8rem;
@@ -221,6 +234,11 @@ a:focus-visible {
 
   .entry-list {
     gap: 1rem;
+  }
+
+  .entry-row {
+    min-height: 4.5rem;
+    padding-block: 0.75rem;
   }
 
   .intro-section .section-title {

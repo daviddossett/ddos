@@ -1,0 +1,38 @@
+---
+import Experience from "../components/Experience.astro";
+import Footer from "../components/Footer.astro";
+import Projects from "../components/Projects.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <main>
+    <section class="intro-section" aria-labelledby="today-heading">
+      <h1 id="today-heading" class="section-title">Today</h1>
+      <div class="intro-copy">
+        <p>
+          I&apos;m a product designer based in Seattle, currently working on
+          <br class="desktop-line-break" /> the <a
+            href="https://github.com/features/ai/github-app"
+            target="_blank"
+            rel="noopener noreferrer">Copilot labs</a
+          > team at <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer">GitHub</a
+          >. I love building tools for developers.
+        </p>
+        <p>
+          Previously, I led design for <a
+            href="https://code.visualstudio.com/"
+            target="_blank"
+            rel="noopener noreferrer">VS Code</a
+          >.
+        </p>
+      </div>
+    </section>
+    <Projects />
+    <Experience />
+  </main>
+  <Footer />
+</Layout>
