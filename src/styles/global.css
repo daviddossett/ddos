@@ -69,15 +69,19 @@ body {
 
 a {
   color: inherit;
-  text-decoration-line: underline;
-  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
-  text-decoration-style: dotted;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.25em;
 }
 
-a:hover {
-  text-decoration-color: currentColor;
+a {
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(
+    in oklch,
+    var(--hover) 80%,
+    var(--quaternary)
+  );
+  text-decoration-style: solid;
+  text-decoration-thickness: 2px;
+  text-decoration-skip-ink: auto;
+  text-underline-offset: 2px;
 }
 
 a:focus-visible {
@@ -148,30 +152,17 @@ a:focus-visible {
   text-wrap: pretty;
 }
 
-.intro-copy a {
-  text-decoration-line: underline;
-  text-decoration-style: dotted;
-  text-decoration-color: currentColor;
-  text-underline-offset: 0.25em;
-}
-
 .desktop-line-break {
   display: none;
 }
 
 .footer-link {
   color: var(--metadata);
-  text-decoration-line: underline;
-  text-decoration-style: dotted;
-  text-decoration-color: currentColor;
-  text-underline-offset: 0.25em;
 }
 
 .intro-copy a:hover,
 .footer-link:hover {
   color: var(--ink);
-  text-decoration-style: solid;
-  text-decoration-color: currentColor;
 }
 
 .content-section {
