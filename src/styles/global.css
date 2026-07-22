@@ -152,10 +152,6 @@ a:focus-visible {
   text-wrap: pretty;
 }
 
-.intro-phrase {
-  white-space: nowrap;
-}
-
 .footer-link {
   color: var(--metadata);
 }
@@ -247,6 +243,10 @@ a:focus-visible {
 @media (min-width: 40rem) {
   .site-shell {
     padding-top: 8rem;
+  }
+
+  .intro-phrase {
+    white-space: nowrap;
   }
 
   .entry-list {
