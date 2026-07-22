@@ -71,8 +71,7 @@ a {
   color: inherit;
 }
 
-a,
-.entry-link .entry-title {
+a {
   text-decoration-line: underline;
   text-decoration-color: color-mix(
     in oklch,
@@ -162,8 +161,7 @@ a:focus-visible {
 }
 
 .intro-copy a:hover,
-.footer-link:hover,
-.entry-link:hover .entry-title {
+.footer-link:hover {
   color: var(--ink);
 }
 
@@ -206,10 +204,6 @@ a:focus-visible {
   color: var(--ink);
   font-weight: 400;
   text-wrap: pretty;
-}
-
-.entry-link .entry-title {
-  align-self: flex-start;
 }
 
 .entry-description {
