@@ -1,13 +1,14 @@
 import Head from "next/head";
+import type { ReactNode } from "react";
 import { Header } from "./header";
 
 interface LayoutProps {
-  children: any;
+  children: ReactNode;
   title?: string;
   description?: string;
 }
 
-function Layout({ children, title, description }: LayoutProps): JSX.Element {
+function Layout({ children, title, description }: LayoutProps) {
   const isDev = process.env.NODE_ENV === "development";
   const pageTitle = title || "David Dossett";
   const fullTitle = isDev ? `${pageTitle} — Dev` : pageTitle;
