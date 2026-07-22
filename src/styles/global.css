@@ -245,6 +245,10 @@ a:focus-visible {
     padding-top: 8rem;
   }
 
+  .intro-phrase {
+    white-space: nowrap;
+  }
+
   .entry-list {
     gap: 1rem;
   }
