@@ -75,7 +75,7 @@ a {
   text-decoration-line: underline;
   text-decoration-color: color-mix(
     in oklch,
-    var(--hover) 80%,
+    var(--hover) 70%,
     var(--quaternary)
   );
   text-decoration-style: solid;
