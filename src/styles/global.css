@@ -23,7 +23,6 @@
   --canvas: oklch(0.985 0 0);
   --ink: oklch(0.205 0 0);
   --muted: oklch(0.439 0 0);
-  --tertiary: oklch(0.556 0 0);
   --quaternary: oklch(0.708 0 0);
   --metadata: oklch(0.498 0 0);
   --hover: oklch(0.97 0 0);
@@ -37,7 +36,6 @@
     --canvas: oklch(0.145 0 0);
     --ink: oklch(1 0 0 / 90%);
     --muted: oklch(1 0 0 / 70%);
-    --tertiary: oklch(1 0 0 / 50%);
     --quaternary: oklch(1 0 0 / 32%);
     --metadata: oklch(1 0 0 / 60%);
     --hover: oklch(0.269 0 0);
@@ -289,16 +287,5 @@ a:focus-visible {
 @media (min-width: 48rem) {
   .site-shell {
     padding-top: 4rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
   }
 }
