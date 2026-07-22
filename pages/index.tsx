@@ -32,8 +32,9 @@ export default function Home() {
           </h1>
           <div className="intro-copy">
             <p>
-              I&apos;m a product designer based in Seattle, currently working on the {copilotLabsLink} team at{" "}
-              {githubLink}. I love building tools for developers.
+              I&apos;m a product designer based in Seattle, currently working on
+              <br className="desktop-line-break" /> the {copilotLabsLink} team at {githubLink}. I love building tools
+              for developers.
             </p>
             <p>Previously, I led design for {vsCodeLink}.</p>
           </div>
