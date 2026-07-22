@@ -5,19 +5,19 @@ import { ExperienceList } from "../components/experience";
 import { Projects } from "../components/projects";
 
 const githubLink = (
-  <Link className="intro" href="https://github.com" target="blank">
+  <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
     GitHub
   </Link>
 );
 
-const copilotLink = (
-  <Link className="intro" href="https://github.com/features/copilot" target="blank">
-    Copilot
+const copilotLabsLink = (
+  <Link href="https://github.com/features/ai/github-app" target="_blank" rel="noopener noreferrer">
+    Copilot labs
   </Link>
 );
 
 const vsCodeLink = (
-  <Link className="intro" href="https://code.visualstudio.com" target="blank">
+  <Link href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">
     VS Code
   </Link>
 );
@@ -26,17 +26,20 @@ export default function Home() {
   return (
     <Layout>
       <main>
-        <div className="py-24 max-w-3xl flex flex-col gap-8">
-          <p className="intro">
-            Hi, I'm David. I'm a designer and okayish developer based in Seattle. I'm currently working at {githubLink}{" "}
-            building {copilotLink}.
-          </p>
-          <p className="intro">Previously, I led design for {vsCodeLink} at Microsoft.</p>
-        </div>
-        <div className="flex flex-col gap-14">
-          <Projects />
-          <ExperienceList />
-        </div>
+        <section className="intro-section" aria-labelledby="today-heading">
+          <h1 id="today-heading" className="section-title">
+            Today
+          </h1>
+          <div className="intro-copy">
+            <p>
+              I&apos;m a software designer based in Seattle, currently working on the {copilotLabsLink} team at{" "}
+              {githubLink}. I love building tools for developers.
+            </p>
+            <p>Previously, I led design for {vsCodeLink}.</p>
+          </div>
+        </section>
+        <Projects />
+        <ExperienceList />
       </main>
       <Footer />
     </Layout>

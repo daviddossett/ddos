@@ -16,24 +16,22 @@ function Layout({ children, title, description }: LayoutProps) {
   const siteUrl = "https://ddossett.com";
 
   return (
-    <div className="max-w-[960px] mx-auto w-full px-4">
+    <div className="site-shell">
       <Head>
         <title>{fullTitle}</title>
         <meta name="description" content={pageDescription} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        {/* Open Graph */}
         <meta property="og:title" content={fullTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={siteUrl} />
 
-        {/* Twitter */}
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={fullTitle} />
         <meta name="twitter:description" content={pageDescription} />
 
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
       </Head>
       <Header />
       {children}

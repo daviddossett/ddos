@@ -1,6 +1,5 @@
 import React from "react";
-import { DescriptionRow } from "./description-row";
-
+import styles from "./entry-list.module.css";
 interface ExperienceData {
   title: string;
   company: string;
@@ -9,7 +8,7 @@ interface ExperienceData {
 
 const experiences: ExperienceData[] = [
   {
-    title: "Staff Product Designer, Copilot",
+    title: "Staff Product Designer, Copilot Labs",
     company: "GitHub",
     description: "2025 - Present",
   },
@@ -21,22 +20,22 @@ const experiences: ExperienceData[] = [
   {
     title: "Senior Designer, VS Code",
     company: "Microsoft",
-    description: "2021 — 2024",
+    description: "2021–2024",
   },
   {
     title: "Senior Designer, Product Insights",
     company: "Microsoft",
-    description: "2019 — 2021",
+    description: "2019–2021",
   },
   {
     title: "Designer 2, Aria",
     company: "Microsoft",
-    description: "2018 — 2019",
+    description: "2018–2019",
   },
   {
     title: "Designer, Aria",
     company: "Microsoft",
-    description: "2016 — 2018",
+    description: "2016–2018",
   },
   {
     title: "Intern, HoloLens",
@@ -47,18 +46,23 @@ const experiences: ExperienceData[] = [
 
 export const ExperienceList: React.FC = () => {
   return (
-    <div className="flex-col">
-      <h2 className="mt-0 font-base font-semibold text-blue-600 dark:text-blue-400">Experience</h2>
-      <div className="flex flex-col gap-6">
-        {experiences.map((experience, index) => (
-          <DescriptionRow
-            key={index}
-            title={experience.title}
-            descriptionPrimary={experience.company}
-            descriptionSecondary={experience.description}
-          />
+    <section className="content-section" aria-labelledby="experience-heading">
+      <h2 id="experience-heading" className="section-title">
+        Experience
+      </h2>
+      <ul className={`${styles.list} entry-list`}>
+        {experiences.map((experience) => (
+          <li
+            key={`${experience.company}-${experience.title}`}
+            className={`${styles.row} entry`}
+          >
+            <span className="entry-title">{experience.title}</span>
+            <span className="entry-description">
+              {experience.company}, {experience.description}
+            </span>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 };
