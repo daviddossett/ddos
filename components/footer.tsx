@@ -1,11 +1,15 @@
 import Link from "next/link";
 
-// test change
 export const Footer: React.FC = () => {
   return (
-    <div className="flex space-x-4 gap-1 py-16">
+    <footer
+      className="content-section flex flex-wrap pb-4"
+      aria-label="Social links"
+      style={{ columnGap: "2rem", rowGap: "0.75rem" }}
+    >
       <Link
         href="https://twitter.com/david_dossett"
+        className="footer-link"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -13,6 +17,7 @@ export const Footer: React.FC = () => {
       </Link>
       <Link
         href="https://github.com/daviddossett"
+        className="footer-link"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -20,11 +25,12 @@ export const Footer: React.FC = () => {
       </Link>
       <Link
         href="https://www.linkedin.com/in/davidcdossett/"
+        className="footer-link"
         target="_blank"
         rel="noopener noreferrer"
       >
         LinkedIn
       </Link>
-    </div>
+    </footer>
   );
 };

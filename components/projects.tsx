@@ -1,69 +1,77 @@
-import Image from "next/image";
-import { DescriptionRow } from "./description-row";
+import Link from "next/link";
+import styles from "./entry-list.module.css";
 
 interface ProjectProps {
   title: string;
   description: string;
-  images: string[];
+  href: string;
 }
 
-const Project: React.FC<ProjectProps> = ({ title, description, images }) => {
+const ProjectContent: React.FC<Omit<ProjectProps, "href">> = ({ title, description }) => (
+  <>
+    <span className="entry-title">{title}</span>
+    <span className="entry-description">{description}</span>
+  </>
+);
+
+const Project: React.FC<ProjectProps> = ({ title, description, href }) => {
   return (
-    <div className="flex flex-col gap-4">
-      <DescriptionRow title={title} descriptionPrimary={description} />
-      {images.map((image, index) => (
-        <Image key={index} src={image} alt={title} width="1600" height="800" className="rounded-sm" />
-      ))}
-    </div>
+    <li>
+      <Link
+        className={`${styles.row} entry entry-link`}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <ProjectContent title={title} description={description} />
+      </Link>
+    </li>
   );
 };
 
 export const Projects: React.FC = () => {
   return (
-    <div className="flex-col">
-      <h2 className="mt-0 font-base  text-blue-600 dark:text-blue-400">Recent Projects</h2>
-      <div className="flex flex-col gap-16">
+    <section className="content-section" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" className="section-title">
+        Projects
+      </h2>
+      <ul className={`${styles.list} entry-list`}>
+        <Project
+          title="GitHub Copilot app"
+          description="A native desktop home for agent-driven development"
+          href="https://github.com/features/ai/github-app"
+        />
+        <Project
+          title="GitHub Copilot CLI"
+          description="A coding agent built for the terminal"
+          href="https://github.com/features/copilot/cli"
+        />
+        <Project
+          title="Ace"
+          description="Multiplayer agentic coding with your team"
+          href="https://githubnext.com/talks/one-developer-two-dozen-agents-zero-alignment/"
+        />
+        <Project
+          title="GitHub Models"
+          description="Compare and experiment with leading AI models"
+          href="https://github.com/features/models"
+        />
+        <Project
+          title="GitHub Spark"
+          description="Build and ship full-stack apps with natural language"
+          href="https://github.com/features/spark"
+        />
         <Project
           title="GitHub Copilot"
-          description="Copilot Chat, Inline Chat, and extensibility in VS Code"
-          images={["/images/copilot-chat.png"]}
+          description="AI-assisted development across GitHub and the editor"
+          href="https://github.com/features/copilot"
         />
         <Project
-          title="Merge Editor"
-          description="Reducing anxiety when resolving complex conflicts"
-          images={["/images/vscode-merge-editor.png"]}
+          title="VS Code"
+          description="The open source AI code editor"
+          href="https://code.visualstudio.com/"
         />
-        <Project
-          title="Command Center"
-          description="Bringing keyboard efficiency to the masses"
-          images={["/images/vscode-command-center.png"]}
-        />
-        <Project
-          title="Profiles"
-          description="Configure VS Code for different workloads"
-          images={["/images/vscode-profiles.png"]}
-        />
-        <Project
-          title="Default Themes"
-          description="Modernized, accessible, dark, light, and high contrast themes"
-          images={["/images/vscode-theme-dark.png", "/images/vscode-theme-light.png"]}
-        />
-        <Project
-          title="GitHub Pull Requests & Issues Extension"
-          description="Revamped UI for the much-loved GitHub extension"
-          images={["/images/vscode-ghpri.png"]}
-        />
-        <Project
-          title="Webview Toolkit for Visual Studio Code"
-          description="A component library for building webview-based extensions in Visual Studio Code"
-          images={["/images/vscode-webview-toolkit.png"]}
-        />
-        <Project
-          title="Grid Playground"
-          description="Side project to quickly generate CSS grid layouts"
-          images={["/images/grid-playground.png"]}
-        />
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 };
