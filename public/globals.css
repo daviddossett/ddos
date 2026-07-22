@@ -148,6 +148,10 @@ a:focus-visible {
   text-underline-offset: 0.25em;
 }
 
+.desktop-line-break {
+  display: none;
+}
+
 .footer-link {
   color: var(--muted);
   text-decoration-line: underline;
@@ -214,6 +218,10 @@ a:focus-visible {
 
   .intro-section .section-title {
     margin-bottom: 1.5rem;
+  }
+
+  .desktop-line-break {
+    display: initial;
   }
 
   .content-section .section-title {
