@@ -2,15 +2,21 @@
 name: "My portfolio"
 description: "A quiet, text-first portfolio for David Dossett."
 colors:
-  canvas: "#fdfdfc"
-  canvas-dark: "#111110"
-  ink: "#21201c"
-  ink-dark: "#eeeeec"
-  muted: "#63635e"
-  muted-dark: "#b5b3ad"
-  hover: "#f5f4f4"
-  hover-dark: "#191918"
-  selection: "#93c5fd"
+  canvas: "oklch(0.985 0 0)"
+  canvas-dark: "oklch(0.145 0 0)"
+  ink: "oklch(0.205 0 0)"
+  ink-dark: "oklch(1 0 0 / 90%)"
+  muted: "oklch(0.439 0 0)"
+  muted-dark: "oklch(1 0 0 / 70%)"
+  tertiary: "oklch(0.556 0 0)"
+  tertiary-dark: "oklch(1 0 0 / 50%)"
+  quaternary: "oklch(0.708 0 0)"
+  quaternary-dark: "oklch(1 0 0 / 32%)"
+  metadata: "oklch(0.498 0 0)"
+  metadata-dark: "oklch(1 0 0 / 60%)"
+  hover: "oklch(0.97 0 0)"
+  hover-dark: "oklch(0.269 0 0)"
+  accent: "oklch(0.671 0.212 34.5)"
 typography:
   title:
     fontFamily: "Sans, Sans Fallback, sans-serif"
@@ -67,19 +73,23 @@ The system reads like a carefully maintained personal index: compact, direct, an
 
 ## 2. Colors
 
-The palette is monochromatic and slightly softened, preserving comfortable contrast without using pure white or pure black as the dominant canvas.
+The palette uses neutral light and dark ramps, with a single orange accent reserved for selection feedback. It preserves comfortable contrast without using pure white or pure black as the dominant canvas.
 
 ### Primary
-- **Quiet Ink** (#21201c): Primary text and interactive labels.
-- **Night Ink** (#eeeeec): Primary text in dark mode.
+- **Quiet Ink** (`oklch(0.205 0 0)`): Primary text and interactive labels.
+- **Night Ink** (`oklch(1 0 0 / 90%)`): Primary text in dark mode.
 
 ### Neutral
-- **Soft Canvas** (#fdfdfc): Light-mode page background.
-- **Night Canvas** (#111110): Dark-mode page background.
-- **Secondary Graphite** (#63635e): Supporting copy in light mode.
-- **Secondary Silver** (#b5b3ad): Supporting copy in dark mode.
-- **Quiet Hover** (#f5f4f4): Hover feedback for linked rows.
-- **Night Hover** (#191918): Dark-mode hover feedback.
+- **Soft Canvas** (`oklch(0.985 0 0)`): Light-mode page background.
+- **Night Canvas** (`oklch(0.145 0 0)`): Dark-mode page background.
+- **Secondary Graphite** (`oklch(0.439 0 0)`): Supporting copy in light mode.
+- **Secondary Silver** (`oklch(1 0 0 / 70%)`): Supporting copy in dark mode.
+- **Metadata Graphite** (`oklch(0.498 0 0)` / `oklch(1 0 0 / 60%)`): Project metadata and footer links, balanced between the secondary and tertiary tones.
+- **Tertiary Graphite** (`oklch(0.556 0 0)` / `oklch(1 0 0 / 50%)`): Available for subdued structure.
+- **Quaternary Graphite** (`oklch(0.708 0 0)` / `oklch(1 0 0 / 32%)`): Non-text decoration only because it does not meet this site's AA requirement at 16px.
+- **Quiet Hover** (`oklch(0.97 0 0)`): Hover feedback for linked rows.
+- **Night Hover** (`oklch(0.269 0 0)`): Dark-mode hover feedback.
+- **Brand Orange** (`oklch(0.671 0.212 34.5)`): Selection feedback only.
 
 ### Named Rules
 
@@ -133,7 +143,7 @@ Project entries pair a regular-weight title with one line of muted context. On m
 ### Do:
 - **Do** keep the page measure at 692px with 24px horizontal padding.
 - **Do** separate major sections by 96–128px and keep related lines within 8–16px.
-- **Do** use #21201c and #63635e for readable light-mode hierarchy.
+- **Do** use the primary and secondary neutral roles for readable light-mode hierarchy.
 - **Do** preserve visible keyboard focus and reduced-motion behavior.
 
 ### Don't:
