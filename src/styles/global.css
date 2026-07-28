@@ -38,7 +38,7 @@
     --muted: oklch(1 0 0 / 70%);
     --quaternary: oklch(1 0 0 / 32%);
     --metadata: oklch(1 0 0 / 60%);
-    --hover: oklch(0.269 0 0);
+    --hover: oklch(0.2 0 0);
   }
 }
 

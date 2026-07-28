@@ -15,7 +15,7 @@ colors:
   metadata: "oklch(0.498 0 0)"
   metadata-dark: "oklch(1 0 0 / 60%)"
   hover: "oklch(0.97 0 0)"
-  hover-dark: "oklch(0.269 0 0)"
+  hover-dark: "oklch(0.2 0 0)"
   accent: "oklch(0.671 0.212 34.5)"
 typography:
   title:
@@ -88,7 +88,7 @@ The palette uses neutral light and dark ramps, with a single orange accent reser
 - **Tertiary Graphite** (`oklch(0.556 0 0)` / `oklch(1 0 0 / 50%)`): Available for subdued structure.
 - **Quaternary Graphite** (`oklch(0.708 0 0)` / `oklch(1 0 0 / 32%)`): Non-text decoration only because it does not meet this site's AA requirement at 16px.
 - **Quiet Hover** (`oklch(0.97 0 0)`): Hover feedback for linked rows.
-- **Night Hover** (`oklch(0.269 0 0)`): Dark-mode hover feedback.
+- **Night Hover** (`oklch(0.2 0 0)`): Dark-mode hover feedback.
 - **Brand Orange** (`oklch(0.671 0.212 34.5)`): Selection feedback only.
 
 ### Named Rules
