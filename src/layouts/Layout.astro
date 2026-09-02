@@ -21,6 +21,18 @@ const pageUrl = new URL(
 <!doctype html>
 <html lang="en">
   <head>
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem("theme");
+        document.documentElement.dataset.theme =
+          theme === "light" || theme === "dark" || theme === "system"
+            ? theme
+            : "system";
+      } catch (error) {
+        document.documentElement.dataset.theme = "system";
+        console.warn("Unable to read theme preference.", error);
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>

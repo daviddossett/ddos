@@ -1,0 +1,42 @@
+<button class="theme-toggle" type="button" data-theme-toggle>
+  Theme: <span data-theme-label>System</span>
+</button>
+
+<script>
+  const themes = ["system", "light", "dark"] as const;
+  type Theme = (typeof themes)[number];
+
+  const toggle = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+  const label = toggle?.querySelector<HTMLElement>("[data-theme-label]");
+
+  const isTheme = (value: string | undefined): value is Theme =>
+    themes.some((theme) => theme === value);
+
+  const setTheme = (theme: Theme) => {
+    document.documentElement.dataset.theme = theme;
+    if (label) {
+      label.textContent = theme[0].toUpperCase() + theme.slice(1);
+    }
+    toggle?.setAttribute(
+      "aria-label",
+      `Theme: ${theme}. Activate to change color theme`,
+    );
+  };
+
+  const currentTheme = document.documentElement.dataset.theme;
+  setTheme(isTheme(currentTheme) ? currentTheme : "system");
+
+  toggle?.addEventListener("click", () => {
+    const current = document.documentElement.dataset.theme;
+    const index = isTheme(current) ? themes.indexOf(current) : 0;
+    const nextTheme = themes[(index + 1) % themes.length];
+
+    setTheme(nextTheme);
+
+    try {
+      localStorage.setItem("theme", nextTheme);
+    } catch (error) {
+      console.warn("Unable to save theme preference.", error);
+    }
+  });
+</script>

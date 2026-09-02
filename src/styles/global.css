@@ -32,7 +32,8 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]),
+  :root[data-theme="system"] {
     --canvas: oklch(0.145 0 0);
     --ink: oklch(1 0 0 / 90%);
     --muted: oklch(1 0 0 / 70%);
@@ -40,6 +41,20 @@
     --metadata: oklch(1 0 0 / 60%);
     --hover: oklch(0.2 0 0);
   }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --canvas: oklch(0.145 0 0);
+  --ink: oklch(1 0 0 / 90%);
+  --muted: oklch(1 0 0 / 70%);
+  --quaternary: oklch(1 0 0 / 32%);
+  --metadata: oklch(1 0 0 / 60%);
+  --hover: oklch(0.2 0 0);
+  color-scheme: dark;
 }
 
 * {
@@ -90,6 +105,25 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  color: var(--canvas);
+  background: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+  transform: translateY(calc(-100% - 1rem));
+  transition: transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 .site-shell {
   width: 100%;
   max-width: 692px;
@@ -131,6 +165,26 @@ a:focus-visible {
   color: var(--muted);
   font-weight: 500;
   line-height: 1;
+}
+
+.theme-toggle {
+  margin-top: 1.5rem;
+  padding: 0.375rem 0.625rem;
+  border: 0;
+  border-radius: 0.5rem;
+  color: var(--metadata);
+  background: var(--hover);
+  font: inherit;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--ink);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--muted);
+  outline-offset: 2px;
 }
 
 .section-title {
@@ -190,10 +244,14 @@ a:focus-visible {
 .entry-link {
   border-radius: 0.5rem;
   text-decoration: none;
+  transition:
+    background-color 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .entry-link:hover {
   background: var(--hover);
+  transform: translateX(0.25rem);
 }
 
 .entry-title {
@@ -238,6 +296,17 @@ a:focus-visible {
   margin: 0;
   padding-left: 1.25rem;
   color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link,
+  .entry-link {
+    transition: none;
+  }
+
+  .entry-link:hover {
+    transform: none;
+  }
 }
 
 @media (min-width: 40rem) {
