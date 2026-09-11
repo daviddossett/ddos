@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import ThemeBootstrap from "../components/ThemeBootstrap.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -21,6 +22,7 @@ const pageUrl = new URL(
 <!doctype html>
 <html lang="en">
   <head>
+    <ThemeBootstrap />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>

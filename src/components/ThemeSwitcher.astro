@@ -1,0 +1,73 @@
+---
+const themes = [
+  { value: "light", label: "Light" },
+  { value: "dark", label: "Dark" },
+  { value: "high-contrast", label: "High contrast" },
+  { value: "lagoon", label: "Lagoon" },
+  { value: "sunset", label: "Sunset" },
+];
+---
+
+<div class="theme-switcher">
+  <label for="theme-select">Theme</label>
+  <select id="theme-select" name="theme" autocomplete="off">
+    {themes.map((theme) => (
+      <option value={theme.value}>{theme.label}</option>
+    ))}
+  </select>
+</div>
+
+<script>
+  const STORAGE_KEY = "ddossett-theme";
+  const THEMES = ["light", "dark", "high-contrast", "lagoon", "sunset"] as const;
+  type Theme = (typeof THEMES)[number];
+
+  function isTheme(value: string | null): value is Theme {
+    return THEMES.includes(value as Theme);
+  }
+
+  function systemTheme(): Theme {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  }
+
+  function storedTheme(): Theme | null {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return isTheme(stored) ? stored : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function applyTheme(theme: Theme, persist: boolean) {
+    document.documentElement.setAttribute("data-theme", theme);
+    if (!persist) return;
+    try {
+      localStorage.setItem(STORAGE_KEY, theme);
+    } catch {
+      // Ignore quota / private-mode failures; the session still updates.
+    }
+  }
+
+  const select = document.getElementById("theme-select");
+  if (select instanceof HTMLSelectElement) {
+    const initial = storedTheme() ?? systemTheme();
+    select.value = initial;
+    applyTheme(initial, false);
+
+    select.addEventListener("change", () => {
+      if (isTheme(select.value)) applyTheme(select.value, true);
+    });
+
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", () => {
+        if (storedTheme()) return;
+        const next = systemTheme();
+        select.value = next;
+        applyTheme(next, false);
+      });
+  }
+</script>
