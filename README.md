@@ -1,7 +1,5 @@
 David Dossett's personal website, built with Astro and deployed as a static site.
 
-> Tiny test edit from Grok Bot — GitHub write access is live.
-
 ## Development
 
 ```sh
