@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import ThemeHead from "../components/ThemeHead.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -36,6 +37,7 @@ const pageUrl = new URL(
     <meta name="twitter:description" content={description} />
 
     <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <ThemeHead />
     <link
       rel="preload"
       href="/fonts/InterVariable.woff2"

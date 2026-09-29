@@ -1,0 +1,17 @@
+---
+import { THEME_STORAGE_KEY } from "../scripts/theme";
+---
+
+<script is:inline define:vars={{ storageKey: THEME_STORAGE_KEY }}>
+  try {
+    const preference = localStorage.getItem(storageKey);
+
+    if (preference === "light" || preference === "dark") {
+      document.documentElement.dataset.theme = preference;
+    } else if (preference === "system") {
+      delete document.documentElement.dataset.theme;
+    }
+  } catch (error) {
+    console.warn("Unable to apply the saved theme preference.", error);
+  }
+</script>

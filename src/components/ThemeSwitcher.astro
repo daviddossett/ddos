@@ -1,0 +1,68 @@
+<fieldset class="theme-switcher">
+  <legend class="visually-hidden">Theme</legend>
+
+  <input
+    class="visually-hidden"
+    type="radio"
+    id="theme-light"
+    name="theme"
+    value="light"
+  />
+  <label class="theme-option" for="theme-light">Light</label>
+
+  <input
+    class="visually-hidden"
+    type="radio"
+    id="theme-system"
+    name="theme"
+    value="system"
+    checked
+  />
+  <label class="theme-option" for="theme-system">System</label>
+
+  <input
+    class="visually-hidden"
+    type="radio"
+    id="theme-dark"
+    name="theme"
+    value="dark"
+  />
+  <label class="theme-option" for="theme-dark">Dark</label>
+</fieldset>
+
+<script>
+  import {
+    applyThemePreference,
+    isThemePreference,
+    readThemePreference,
+    saveThemePreference,
+  } from "../scripts/theme";
+
+  const switcher = document.querySelector<HTMLFieldSetElement>(
+    ".theme-switcher",
+  );
+
+  if (switcher) {
+    const preference = readThemePreference();
+    const selectedInput = switcher.querySelector<HTMLInputElement>(
+      `input[value="${preference}"]`,
+    );
+
+    if (selectedInput) {
+      selectedInput.checked = true;
+    }
+
+    applyThemePreference(preference);
+
+    switcher.addEventListener("change", (event) => {
+      const input = event.target;
+
+      if (!(input instanceof HTMLInputElement) || !isThemePreference(input.value)) {
+        return;
+      }
+
+      applyThemePreference(input.value);
+      saveThemePreference(input.value);
+    });
+  }
+</script>
