@@ -28,17 +28,35 @@
   --hover: oklch(0.97 0 0);
   --accent: oklch(0.671 0.212 34.5);
   --selection-ink: oklch(0.145 0 0);
-  color-scheme: light dark;
+  --when-light: inline;
+  --when-dark: none;
+  color-scheme: light;
+}
+
+/* An explicit data-theme wins; otherwise follow the system preference. */
+:root[data-theme="dark"] {
+  --canvas: oklch(0.145 0 0);
+  --ink: oklch(1 0 0 / 90%);
+  --muted: oklch(1 0 0 / 70%);
+  --quaternary: oklch(1 0 0 / 32%);
+  --metadata: oklch(1 0 0 / 60%);
+  --hover: oklch(0.2 0 0);
+  --when-light: none;
+  --when-dark: inline;
+  color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --canvas: oklch(0.145 0 0);
     --ink: oklch(1 0 0 / 90%);
     --muted: oklch(1 0 0 / 70%);
     --quaternary: oklch(1 0 0 / 32%);
     --metadata: oklch(1 0 0 / 60%);
     --hover: oklch(0.2 0 0);
+    --when-light: none;
+    --when-dark: inline;
+    color-scheme: dark;
   }
 }
 
@@ -71,7 +89,8 @@ a {
   color: inherit;
 }
 
-a {
+a,
+.theme-toggle {
   text-decoration-line: underline;
   text-decoration-color: color-mix(
     in oklch,
@@ -84,7 +103,8 @@ a {
   text-underline-offset: 2px;
 }
 
-a:focus-visible {
+a:focus-visible,
+.theme-toggle:focus-visible {
   border-radius: 2px;
   outline: 2px solid var(--muted);
   outline-offset: 2px;
@@ -152,13 +172,41 @@ a:focus-visible {
   text-wrap: pretty;
 }
 
-.footer-link {
+.footer-link,
+.theme-toggle {
   color: var(--metadata);
 }
 
 .intro-copy a:hover,
-.footer-link:hover {
+.footer-link:hover,
+.theme-toggle:hover {
   color: var(--ink);
+}
+
+.theme-toggle {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.theme-toggle-to-dark {
+  display: var(--when-light);
+}
+
+.theme-toggle-to-light {
+  display: var(--when-dark);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .content-section {
@@ -211,9 +259,18 @@ a:focus-visible {
 .site-footer {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
   column-gap: 2rem;
   row-gap: 0.75rem;
   padding-bottom: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  row-gap: 0.75rem;
 }
 
 .not-found {

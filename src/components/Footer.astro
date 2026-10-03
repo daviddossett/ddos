@@ -1,26 +1,65 @@
-<footer class="site-footer content-section" aria-label="Social links">
-  <a
-    href="https://twitter.com/david_dossett"
-    class="footer-link"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Twitter
-  </a>
-  <a
-    href="https://github.com/daviddossett"
-    class="footer-link"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    GitHub
-  </a>
-  <a
-    href="https://www.linkedin.com/in/davidcdossett/"
-    class="footer-link"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    LinkedIn
-  </a>
+<footer class="site-footer content-section">
+  <nav class="footer-links" aria-label="Social links">
+    <a
+      href="https://twitter.com/david_dossett"
+      class="footer-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Twitter
+    </a>
+    <a
+      href="https://github.com/daviddossett"
+      class="footer-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      GitHub
+    </a>
+    <a
+      href="https://www.linkedin.com/in/davidcdossett/"
+      class="footer-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      LinkedIn
+    </a>
+  </nav>
+  <button type="button" class="theme-toggle" data-theme-toggle>
+    <span class="visually-hidden">Switch to</span>
+    <span class="theme-toggle-to-dark">Dark mode</span>
+    <span class="theme-toggle-to-light">Light mode</span>
+  </button>
 </footer>
+
+<script>
+  const root = document.documentElement;
+  const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  function currentTheme() {
+    const explicit = root.dataset.theme;
+    if (explicit === "light" || explicit === "dark") return explicit;
+    return systemDark.matches ? "dark" : "light";
+  }
+
+  function applyTheme(next: "light" | "dark") {
+    const system = systemDark.matches ? "dark" : "light";
+    // Choosing the system's theme clears the override so the site follows the OS again.
+    try {
+      if (next === system) localStorage.removeItem("theme");
+      else localStorage.setItem("theme", next);
+    } catch {}
+    if (next === system) delete root.dataset.theme;
+    else root.dataset.theme = next;
+  }
+
+  document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
+    const next = currentTheme() === "dark" ? "light" : "dark";
+    if (document.startViewTransition && !reducedMotion.matches) {
+      document.startViewTransition(() => applyTheme(next));
+    } else {
+      applyTheme(next);
+    }
+  });
+</script>
