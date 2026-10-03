@@ -1,13 +1,87 @@
 <header class="site-header">
-  <img
-    class="identity-avatar"
-    src="/images/david-avatar.webp"
-    alt=""
-    width="48"
-    height="48"
-    loading="eager"
-    fetchpriority="high"
-  />
+  <div class="header-bar">
+    <img
+      class="identity-avatar"
+      src="/images/david-avatar.webp"
+      alt=""
+      width="48"
+      height="48"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <button
+      class="theme-toggle"
+      type="button"
+      aria-label="Dark theme"
+      aria-pressed="false"
+      data-theme-toggle
+    >
+      <svg
+        class="theme-icon theme-icon-sun"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="4"></circle>
+        <path
+          d="M12 2.5V5M12 19v2.5M2.5 12H5M19 12h2.5M5.28 5.28l1.77 1.77M16.95 16.95l1.77 1.77M5.28 18.72l1.77-1.77M16.95 7.05l1.77-1.77"
+        ></path>
+      </svg>
+      <svg
+        class="theme-icon theme-icon-moon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 3.25a6.25 6.25 0 0 0 8.75 8.75A8.75 8.75 0 1 1 12 3.25Z"
+        ></path>
+      </svg>
+    </button>
+  </div>
   <span class="identity-name">David Dossett</span>
   <span class="identity-role">Product Designer</span>
 </header>
+
+<script>
+  const root = document.documentElement;
+  const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+  const toggle = document.querySelector<HTMLButtonElement>(
+    "[data-theme-toggle]",
+  );
+
+  const isDark = () =>
+    root.dataset.theme
+      ? root.dataset.theme === "dark"
+      : systemDark.matches;
+
+  const sync = () => toggle?.setAttribute("aria-pressed", String(isDark()));
+
+  toggle?.addEventListener("click", () => {
+    const theme = isDark() ? "light" : "dark";
+    root.dataset.theme = theme;
+    try {
+      localStorage.setItem("theme", theme);
+    } catch {}
+    sync();
+  });
+
+  systemDark.addEventListener("change", sync);
+
+  window.addEventListener("storage", (event) => {
+    if (event.key !== "theme") return;
+    if (event.newValue === "light" || event.newValue === "dark") {
+      root.dataset.theme = event.newValue;
+    } else {
+      delete root.dataset.theme;
+    }
+    sync();
+  });
+
+  sync();
+</script>
