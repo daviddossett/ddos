@@ -19,27 +19,29 @@
   size-adjust: 107.89%;
 }
 
+/*
+ * Tokens resolve through light-dark(), so `color-scheme` is the single switch:
+ * System follows prefers-color-scheme live; data-theme (set before paint by
+ * ThemeScript.astro) pins an explicit choice.
+ */
 :root {
-  --canvas: oklch(0.985 0 0);
-  --ink: oklch(0.205 0 0);
-  --muted: oklch(0.439 0 0);
-  --quaternary: oklch(0.708 0 0);
-  --metadata: oklch(0.498 0 0);
-  --hover: oklch(0.97 0 0);
+  --canvas: light-dark(oklch(0.985 0 0), oklch(0.145 0 0));
+  --ink: light-dark(oklch(0.205 0 0), oklch(1 0 0 / 90%));
+  --muted: light-dark(oklch(0.439 0 0), oklch(1 0 0 / 70%));
+  --quaternary: light-dark(oklch(0.708 0 0), oklch(1 0 0 / 32%));
+  --metadata: light-dark(oklch(0.498 0 0), oklch(1 0 0 / 60%));
+  --hover: light-dark(oklch(0.97 0 0), oklch(0.2 0 0));
   --accent: oklch(0.671 0.212 34.5);
   --selection-ink: oklch(0.145 0 0);
   color-scheme: light dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --canvas: oklch(0.145 0 0);
-    --ink: oklch(1 0 0 / 90%);
-    --muted: oklch(1 0 0 / 70%);
-    --quaternary: oklch(1 0 0 / 32%);
-    --metadata: oklch(1 0 0 / 60%);
-    --hover: oklch(0.2 0 0);
-  }
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 * {
@@ -211,9 +213,105 @@ a:focus-visible {
 .site-footer {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  padding-bottom: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
   column-gap: 2rem;
   row-gap: 0.75rem;
-  padding-bottom: 1rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.theme-switch {
+  --segment: 2rem;
+  --inset: 2px;
+
+  position: relative;
+  display: flex;
+  min-inline-size: 0;
+  margin: 0;
+  padding: var(--inset);
+  border: 1px solid color-mix(in oklch, var(--hover) 70%, var(--quaternary));
+  border-radius: 999px;
+}
+
+/* Selected-segment fill; slides between positions keyed off :checked. */
+.theme-switch::before {
+  position: absolute;
+  top: var(--inset);
+  left: var(--inset);
+  width: var(--segment);
+  height: var(--segment);
+  border-radius: inherit;
+  /* Raw --hover is nearly invisible on the light canvas; nudge it toward the border tone. */
+  background: color-mix(in oklch, var(--hover) 85%, var(--quaternary));
+  content: "";
+}
+
+.theme-switch:has([value="light"]:checked)::before {
+  transform: translateX(100%);
+}
+
+.theme-switch:has([value="dark"]:checked)::before {
+  transform: translateX(200%);
+}
+
+/* Only animate while the user is interacting, so the initial state sync never slides. */
+.theme-switch:is(:hover, :focus-within)::before {
+  transition: transform 220ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.theme-option {
+  position: relative;
+  display: grid;
+  width: var(--segment);
+  height: var(--segment);
+  place-items: center;
+  border-radius: 999px;
+  color: var(--metadata);
+  cursor: pointer;
+}
+
+.theme-option input {
+  position: absolute;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.theme-option svg {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+}
+
+.theme-option:hover,
+.theme-option:has(:checked) {
+  color: var(--ink);
+}
+
+.theme-option:has(:focus-visible) {
+  outline: 2px solid var(--muted);
+  outline-offset: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-switch:is(:hover, :focus-within)::before {
+    transition: none;
+  }
 }
 
 .not-found {

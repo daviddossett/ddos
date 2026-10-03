@@ -36,6 +36,7 @@ typography:
     lineHeight: 1.5
 rounded:
   interactive: "8px"
+  pill: "999px"
 spacing:
   xs: "8px"
   sm: "12px"
@@ -69,7 +70,7 @@ The system reads like a carefully maintained personal index: compact, direct, an
 - Tight groups separated by 96–128px pauses
 - Inter Variable with weight-led hierarchy
 - Flat surfaces with subtle hover fills only on actionable rows
-- Complete light and dark color modes
+- Complete light and dark color modes, following the system by default with an explicit override in the footer
 
 ## 2. Colors
 
@@ -132,6 +133,7 @@ The system is flat. Depth comes from tonal hover feedback and generous separatio
 - The header uses a 48px circular portrait, followed by 32px of space and a two-line identity block with the name in primary ink and the role in muted ink.
 - Text links inherit surrounding typography. Prose links use a 1px dotted underline with a 4px offset, then shift to primary ink with a solid underline on hover. Project rows use a full-row hover fill.
 - The footer presents Twitter, GitHub, and LinkedIn as muted, underlined links in a horizontal row with 32px between links and the standard section gap above it.
+- A System / Light / Dark theme switch sits at the end of the footer row (wrapping below the links on narrow screens): three 32px icon-only segments inside a pill track with a 1px hairline border. The selected segment gets a quiet tonal fill and primary-ink icon, never the orange accent. It is a native radio group, so arrow keys move the selection; segment focus rings sit flush (0 offset) to stay inside the track.
 - All interactive elements use a visible 2px neutral focus outline with a 2px offset.
 
 ### Project Entry

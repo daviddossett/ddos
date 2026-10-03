@@ -1,26 +1,150 @@
-<footer class="site-footer content-section" aria-label="Social links">
-  <a
-    href="https://twitter.com/david_dossett"
-    class="footer-link"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Twitter
-  </a>
-  <a
-    href="https://github.com/daviddossett"
-    class="footer-link"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    GitHub
-  </a>
-  <a
-    href="https://www.linkedin.com/in/davidcdossett/"
-    class="footer-link"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    LinkedIn
-  </a>
+---
+const themeOptions = [
+  { value: "system", label: "System" },
+  { value: "light", label: "Light" },
+  { value: "dark", label: "Dark" },
+] as const;
+---
+
+<footer class="site-footer content-section">
+  <nav class="footer-links" aria-label="Social links">
+    <a
+      href="https://twitter.com/david_dossett"
+      class="footer-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Twitter
+    </a>
+    <a
+      href="https://github.com/daviddossett"
+      class="footer-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      GitHub
+    </a>
+    <a
+      href="https://www.linkedin.com/in/davidcdossett/"
+      class="footer-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      LinkedIn
+    </a>
+  </nav>
+
+  <fieldset class="theme-switch" data-theme-switch>
+    <legend class="visually-hidden">Theme</legend>
+    {
+      themeOptions.map(({ value, label }) => (
+        <label class="theme-option" title={label}>
+          <input
+            type="radio"
+            name="theme"
+            value={value}
+            checked={value === "system"}
+          />
+          <span class="visually-hidden">{label}</span>
+          {value === "system" && (
+            <svg
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="1.75" y="2.75" width="12.5" height="8.5" rx="1.5" />
+              <path d="M5.5 14.25h5M8 11.25v3" />
+            </svg>
+          )}
+          {value === "light" && (
+            <svg
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <circle cx="8" cy="8" r="2.75" />
+              <path d="M8 1.25v1.25M8 13.5v1.25M1.25 8H2.5M13.5 8h1.25M3.23 3.23l.88.88M11.89 11.89l.88.88M3.23 12.77l.88-.88M11.89 4.11l.88-.88" />
+            </svg>
+          )}
+          {value === "dark" && (
+            <svg
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M13.75 9.6A6 6 0 1 1 6.4 2.25a4.75 4.75 0 0 0 7.35 7.35Z" />
+            </svg>
+          )}
+        </label>
+      ))
+    }
+  </fieldset>
 </footer>
+
+<script>
+  const STORAGE_KEY = "theme";
+  const root = document.documentElement;
+  const group = document.querySelector<HTMLFieldSetElement>(
+    "[data-theme-switch]",
+  );
+
+  type Theme = "system" | "light" | "dark";
+
+  function readStoredTheme(): Theme {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return stored === "light" || stored === "dark" ? stored : "system";
+    } catch {
+      return "system";
+    }
+  }
+
+  function applyTheme(theme: Theme) {
+    if (theme === "system") {
+      delete root.dataset.theme;
+    } else {
+      root.dataset.theme = theme;
+    }
+  }
+
+  function syncFromStorage() {
+    const theme = readStoredTheme();
+    applyTheme(theme);
+    const input = group?.querySelector<HTMLInputElement>(
+      `input[value="${theme}"]`,
+    );
+    if (input) input.checked = true;
+  }
+
+  group?.addEventListener("change", (event) => {
+    const theme = (event.target as HTMLInputElement).value as Theme;
+    try {
+      if (theme === "system") {
+        localStorage.removeItem(STORAGE_KEY);
+      } else {
+        localStorage.setItem(STORAGE_KEY, theme);
+      }
+    } catch {}
+    applyTheme(theme);
+  });
+
+  // Keep other open tabs and back/forward-cached pages in step.
+  window.addEventListener("storage", (event) => {
+    if (event.key === STORAGE_KEY || event.key === null) syncFromStorage();
+  });
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) syncFromStorage();
+  });
+
+  syncFromStorage();
+</script>
