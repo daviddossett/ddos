@@ -132,6 +132,7 @@ The system is flat. Depth comes from tonal hover feedback and generous separatio
 - The header uses a 48px circular portrait, followed by 32px of space and a two-line identity block with the name in primary ink and the role in muted ink.
 - Text links inherit surrounding typography. Prose links use a 1px dotted underline with a 4px offset, then shift to primary ink with a solid underline on hover. Project rows use a full-row hover fill.
 - The footer presents Twitter, GitHub, and LinkedIn as muted, underlined links in a horizontal row with 32px between links and the standard section gap above it.
+- A Light / System / Dark segmented control sits at the footer's trailing edge (wrapping below the links on mobile). It is an icon-only radio group with a hairline border and a flat tonal thumb that slides to the selection; System is the default and follows the OS preference live.
 - All interactive elements use a visible 2px neutral focus outline with a 2px offset.
 
 ### Project Entry

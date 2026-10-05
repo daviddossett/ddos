@@ -1,0 +1,9 @@
+<script is:inline>
+  // Runs before first paint so a stored choice never flashes the wrong theme.
+  try {
+    const stored = localStorage.getItem("theme");
+    if (stored === "light" || stored === "dark") {
+      document.documentElement.dataset.theme = stored;
+    }
+  } catch {}
+</script>
