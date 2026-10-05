@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import ThemeScript from "../components/ThemeScript.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -23,6 +24,7 @@ const pageUrl = new URL(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <ThemeScript />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
 

@@ -1,0 +1,100 @@
+<button
+  class="theme-switch"
+  type="button"
+  role="switch"
+  aria-checked="false"
+  aria-label="Dark theme"
+>
+  <span class="theme-switch-track" aria-hidden="true">
+    <span class="theme-switch-star"></span>
+    <span class="theme-switch-star"></span>
+    <span class="theme-switch-star"></span>
+    <span class="theme-switch-star"></span>
+    <span class="theme-switch-cloud"></span>
+    <span class="theme-switch-cloud"></span>
+    <span class="theme-switch-knob">
+      <span class="theme-switch-orb"></span>
+    </span>
+  </span>
+</button>
+
+<script>
+  type Theme = "light" | "dark";
+
+  const root = document.documentElement;
+  const toggle = document.querySelector<HTMLButtonElement>(".theme-switch");
+  const systemDark = matchMedia("(prefers-color-scheme: dark)");
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+
+  const current = (): Theme =>
+    root.dataset.theme === "dark" ? "dark" : "light";
+
+  // Choosing the theme the system already prefers clears the override, so
+  // the page goes back to following the system.
+  const commit = (theme: Theme) => {
+    root.dataset.theme = theme;
+    const system: Theme = systemDark.matches ? "dark" : "light";
+    try {
+      if (theme === system) localStorage.removeItem("theme");
+      else localStorage.setItem("theme", theme);
+    } catch {
+      // Storage can be unavailable (private mode, blocked cookies).
+    }
+  };
+
+  const crossfade = (theme: Theme) => {
+    root.dataset.themeFading = "";
+    commit(theme);
+    window.setTimeout(() => delete root.dataset.themeFading, 360);
+  };
+
+  const reveal = (button: HTMLButtonElement, theme: Theme) => {
+    // The new sky spreads outward from where the knob comes to rest.
+    const rect = button.getBoundingClientRect();
+    const inset = rect.height / 2;
+    const x = theme === "dark" ? rect.right - inset : rect.left + inset;
+    const y = rect.top + inset;
+    const radius = Math.hypot(
+      Math.max(x, innerWidth - x),
+      Math.max(y, innerHeight - y),
+    );
+
+    const transition = document.startViewTransition(() => commit(theme));
+    transition.ready
+      .then(() => {
+        root.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${radius}px at ${x}px ${y}px)`,
+            ],
+          },
+          {
+            duration: 760,
+            easing: "cubic-bezier(0.32, 0.72, 0, 1)",
+            pseudoElement: "::view-transition-new(root)",
+          },
+        );
+      })
+      .catch(() => {});
+  };
+
+  if (toggle) {
+    const sync = () =>
+      toggle.setAttribute("aria-checked", String(current() === "dark"));
+
+    new MutationObserver(sync).observe(root, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+    sync();
+
+    toggle.addEventListener("click", () => {
+      const next: Theme = current() === "dark" ? "light" : "dark";
+      if (reducedMotion.matches) commit(next);
+      else if (typeof document.startViewTransition !== "function")
+        crossfade(next);
+      else reveal(toggle, next);
+    });
+  }
+</script>

@@ -69,7 +69,7 @@ The system reads like a carefully maintained personal index: compact, direct, an
 - Tight groups separated by 96–128px pauses
 - Inter Variable with weight-led hierarchy
 - Flat surfaces with subtle hover fills only on actionable rows
-- Complete light and dark color modes
+- Complete light and dark color modes, following the system until a visitor picks one with the theme switch
 
 ## 2. Colors
 
@@ -90,6 +90,7 @@ The palette uses neutral light and dark ramps, with a single orange accent reser
 - **Quiet Hover** (`oklch(0.97 0 0)`): Hover feedback for linked rows.
 - **Night Hover** (`oklch(0.2 0 0)`): Dark-mode hover feedback.
 - **Brand Orange** (`oklch(0.671 0.212 34.5)`): Selection feedback only.
+- **Theme switch sky** (day `oklch(0.55 0.11 242)` to `oklch(0.63 0.1 232)`, night `oklch(0.44 0.08 268)` to `oklch(0.27 0.05 270)`): Scoped to the theme switch, the one illustrated control on the page. Do not reuse elsewhere.
 
 ### Named Rules
 
@@ -137,6 +138,10 @@ The system is flat. Depth comes from tonal hover feedback and generous separatio
 ### Project Entry
 
 Project entries pair a regular-weight title with one line of muted context. On mobile, rows are 48px tall with 12px horizontal padding and a 28px gap. At 640px and wider, each row is 668px wide within the 644px content measure, created by 12px padding and -12px horizontal margins. Desktop rows are 72px tall with a 16px gap. Only entries with a destination receive hover and focus treatments.
+
+### Theme Switch
+
+A 52×28px pill in the header, aligned with the avatar. Light: a sun knob on a daytime sky with two clouds. Dark: a cratered crescent moon on a night sky with stars. It is a `role="switch"` button named "Dark theme", with the standard 2px neutral focus outline (3px offset). Toggling reveals the new theme as a circle growing from where the knob comes to rest (View Transitions API), falls back to a 320ms color crossfade, and swaps instantly under reduced motion. Tokens use `light-dark()`; `data-theme` on `<html>` pins `color-scheme`, and choosing the system's own preference clears the stored override.
 
 ## 6. Do's and Don'ts
 
