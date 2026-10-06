@@ -1,0 +1,23 @@
+<script is:inline>
+  (() => {
+    const storageKey = "theme";
+    const root = document.documentElement;
+    let storedTheme = null;
+
+    try {
+      storedTheme = window.localStorage.getItem(storageKey);
+    } catch (error) {
+      console.warn("Unable to read the saved theme preference.", error);
+    }
+
+    const theme =
+      storedTheme === "light" || storedTheme === "dark"
+        ? storedTheme
+        : window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+
+    root.dataset.theme = theme;
+    root.style.colorScheme = theme;
+  })();
+</script>

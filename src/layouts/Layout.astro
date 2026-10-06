@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import ThemeScript from "../components/ThemeScript.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -23,6 +24,8 @@ const pageUrl = new URL(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <ThemeScript />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
 
@@ -38,7 +41,7 @@ const pageUrl = new URL(
     <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
     <link
       rel="preload"
-      href="/fonts/InterVariable.woff2"
+      href="/fonts/RobotoVariable.woff2"
       as="font"
       type="font/woff2"
       crossorigin

@@ -1,13 +1,79 @@
 <header class="site-header">
-  <img
-    class="identity-avatar"
-    src="/images/david-avatar.webp"
-    alt=""
-    width="48"
-    height="48"
-    loading="eager"
-    fetchpriority="high"
-  />
+  <div class="site-header-top">
+    <img
+      class="identity-avatar"
+      src="/images/david-avatar.webp"
+      alt=""
+      width="48"
+      height="48"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <button
+      class="theme-toggle"
+      type="button"
+      aria-label="Use dark theme"
+      title="Use dark theme"
+      data-theme-toggle
+    >
+      <svg
+        class="theme-icon theme-icon-moon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          d="M20.4 15.2A8.5 8.5 0 0 1 8.8 3.6 8.5 8.5 0 1 0 20.4 15.2Z"
+        ></path>
+      </svg>
+      <svg
+        class="theme-icon theme-icon-sun"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="3.5"></circle>
+        <path
+          d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+        ></path>
+      </svg>
+    </button>
+  </div>
   <span class="identity-name">David Dossett</span>
   <span class="identity-role">Product Designer</span>
 </header>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.querySelector<HTMLButtonElement>(
+    "[data-theme-toggle]",
+  );
+
+  const updateToggle = (theme: "light" | "dark") => {
+    if (!toggle) return;
+
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    const label = `Use ${nextTheme} theme`;
+
+    toggle.setAttribute("aria-label", label);
+    toggle.title = label;
+  };
+
+  const setTheme = (theme: "light" | "dark") => {
+    root.dataset.theme = theme;
+    root.style.colorScheme = theme;
+    updateToggle(theme);
+
+    try {
+      window.localStorage.setItem("theme", theme);
+    } catch (error) {
+      console.warn("Unable to save the theme preference.", error);
+    }
+  };
+
+  const currentTheme = root.dataset.theme === "dark" ? "dark" : "light";
+  updateToggle(currentTheme);
+
+  toggle?.addEventListener("click", () => {
+    const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+  });
+</script>

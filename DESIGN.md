@@ -28,7 +28,6 @@ typography:
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.5
-    fontFeature: "\"cv01\", \"ss03\""
   label:
     fontFamily: "Sans, Sans Fallback, sans-serif"
     fontSize: "1rem"
@@ -67,7 +66,7 @@ The system reads like a carefully maintained personal index: compact, direct, an
 **Key Characteristics:**
 - A 692px page measure with 24px side padding
 - Tight groups separated by 96–128px pauses
-- Inter Variable with weight-led hierarchy
+- Self-hosted Roboto Variable with weight-led hierarchy
 - Flat surfaces with subtle hover fills only on actionable rows
 - Complete light and dark color modes
 
@@ -90,6 +89,7 @@ The palette uses neutral light and dark ramps, with a single orange accent reser
 - **Quiet Hover** (`oklch(0.97 0 0)`): Hover feedback for linked rows.
 - **Night Hover** (`oklch(0.2 0 0)`): Dark-mode hover feedback.
 - **Brand Orange** (`oklch(0.671 0.212 34.5)`): Selection feedback only.
+- The site follows the visitor's operating-system theme until they choose a light or dark preference, then persists that explicit choice.
 
 ### Named Rules
 
@@ -97,8 +97,8 @@ The palette uses neutral light and dark ramps, with a single orange accent reser
 
 ## 3. Typography
 
-**Display Font:** Sans, a self-hosted Inter Variable build (with metrically adjusted Arial fallback)
-**Body Font:** Sans, a self-hosted Inter Variable build (with metrically adjusted Arial fallback)
+**Display Font:** Sans, a self-hosted Roboto Variable build (with metrically adjusted Arial fallback)
+**Body Font:** Sans, a self-hosted Roboto Variable build (with metrically adjusted Arial fallback)
 
 **Character:** Familiar platform typography keeps attention on the work. Weight, tone, and spacing create hierarchy instead of a separate display face.
 
@@ -130,6 +130,7 @@ The system is flat. Depth comes from tonal hover feedback and generous separatio
 
 ### Navigation
 - The header uses a 48px circular portrait, followed by 32px of space and a two-line identity block with the name in primary ink and the role in muted ink.
+- A 44px theme control sits opposite the portrait, uses the standard interactive radius, and names the theme it will activate for assistive technology.
 - Text links inherit surrounding typography. Prose links use a 1px dotted underline with a 4px offset, then shift to primary ink with a solid underline on hover. Project rows use a full-row hover fill.
 - The footer presents Twitter, GitHub, and LinkedIn as muted, underlined links in a horizontal row with 32px between links and the standard section gap above it.
 - All interactive elements use a visible 2px neutral focus outline with a 2px offset.
