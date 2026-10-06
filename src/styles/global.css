@@ -1,9 +1,9 @@
 @font-face {
-  font-family: "Sans";
-  src: url("/fonts/InterVariable.woff2") format("woff2");
+  font-family: "Roboto";
+  src: url("/fonts/RobotoLatin.woff2") format("woff2");
   font-display: swap;
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 400 500;
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
@@ -11,12 +11,12 @@
 }
 
 @font-face {
-  font-family: "Sans Fallback";
+  font-family: "Roboto Fallback";
   src: local("Arial");
-  ascent-override: 89.79%;
-  descent-override: 22.36%;
+  size-adjust: 99.7809%;
+  ascent-override: 92.9771%;
+  descent-override: 24.4677%;
   line-gap-override: 0%;
-  size-adjust: 107.89%;
 }
 
 :root {
@@ -53,8 +53,9 @@
 
 html {
   min-height: 100%;
-  font-family: "Sans", "Sans Fallback", sans-serif;
+  font-family: "Roboto", "Roboto Fallback", sans-serif;
   font-size: 16px;
+  font-kerning: normal;
   -webkit-font-smoothing: antialiased;
   text-rendering: auto;
 }
@@ -95,7 +96,6 @@ a:focus-visible {
   max-width: 692px;
   margin-inline: auto;
   padding: 3rem 1.5rem 4rem;
-  font-feature-settings: "cv01", "ss03";
 }
 
 .site-header {

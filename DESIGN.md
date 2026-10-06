@@ -19,18 +19,17 @@ colors:
   accent: "oklch(0.671 0.212 34.5)"
 typography:
   title:
-    fontFamily: "Sans, Sans Fallback, sans-serif"
+    fontFamily: "Roboto, Roboto Fallback, sans-serif"
     fontSize: "1rem"
     fontWeight: 500
     lineHeight: 1.5
   body:
-    fontFamily: "Sans, Sans Fallback, sans-serif"
+    fontFamily: "Roboto, Roboto Fallback, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.5
-    fontFeature: "\"cv01\", \"ss03\""
   label:
-    fontFamily: "Sans, Sans Fallback, sans-serif"
+    fontFamily: "Roboto, Roboto Fallback, sans-serif"
     fontSize: "1rem"
     fontWeight: 500
     lineHeight: 1.5
@@ -67,7 +66,7 @@ The system reads like a carefully maintained personal index: compact, direct, an
 **Key Characteristics:**
 - A 692px page measure with 24px side padding
 - Tight groups separated by 96–128px pauses
-- Inter Variable with weight-led hierarchy
+- Roboto with weight-led hierarchy
 - Flat surfaces with subtle hover fills only on actionable rows
 - Complete light and dark color modes
 
@@ -97,8 +96,8 @@ The palette uses neutral light and dark ramps, with a single orange accent reser
 
 ## 3. Typography
 
-**Display Font:** Sans, a self-hosted Inter Variable build (with metrically adjusted Arial fallback)
-**Body Font:** Sans, a self-hosted Inter Variable build (with metrically adjusted Arial fallback)
+**Display Font:** Roboto, self-hosted in the Latin subset (with metrically adjusted Arial fallback)
+**Body Font:** Roboto, self-hosted in the Latin subset (with metrically adjusted Arial fallback)
 
 **Character:** Familiar platform typography keeps attention on the work. Weight, tone, and spacing create hierarchy instead of a separate display face.
 
