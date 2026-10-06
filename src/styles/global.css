@@ -28,17 +28,28 @@
   --hover: oklch(0.97 0 0);
   --accent: oklch(0.671 0.212 34.5);
   --selection-ink: oklch(0.145 0 0);
-  color-scheme: light dark;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --canvas: oklch(0.145 0 0);
+  --ink: oklch(1 0 0 / 90%);
+  --muted: oklch(1 0 0 / 70%);
+  --quaternary: oklch(1 0 0 / 32%);
+  --metadata: oklch(1 0 0 / 60%);
+  --hover: oklch(0.2 0 0);
+  color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --canvas: oklch(0.145 0 0);
     --ink: oklch(1 0 0 / 90%);
     --muted: oklch(1 0 0 / 70%);
     --quaternary: oklch(1 0 0 / 32%);
     --metadata: oklch(1 0 0 / 60%);
     --hover: oklch(0.2 0 0);
+    color-scheme: dark;
   }
 }
 
@@ -114,6 +125,21 @@ a:focus-visible {
   object-fit: cover;
 }
 
+.identity-summary {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.identity-details {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .identity-name,
 .identity-role,
 .section-title,
@@ -131,6 +157,59 @@ a:focus-visible {
   color: var(--muted);
   font-weight: 500;
   line-height: 1;
+}
+
+.theme-toggle {
+  position: relative;
+  display: inline-grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle:hover {
+  color: var(--ink);
+  background: var(--hover);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--muted);
+  outline-offset: 2px;
+}
+
+.theme-toggle-icon {
+  position: absolute;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition:
+    opacity 160ms ease-out,
+    transform 160ms ease-out;
+}
+
+.theme-toggle-icon-sun {
+  opacity: 0;
+  transform: rotate(-20deg) scale(0.8);
+}
+
+:root[data-theme="dark"] .theme-toggle-icon-moon {
+  opacity: 0;
+  transform: rotate(20deg) scale(0.8);
+}
+
+:root[data-theme="dark"] .theme-toggle-icon-sun {
+  opacity: 1;
+  transform: rotate(0) scale(1);
 }
 
 .section-title {
@@ -238,6 +317,12 @@ a:focus-visible {
   margin: 0;
   padding-left: 1.25rem;
   color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle-icon {
+    transition: none;
+  }
 }
 
 @media (min-width: 40rem) {

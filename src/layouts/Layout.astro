@@ -43,6 +43,30 @@ const pageUrl = new URL(
       type="font/woff2"
       crossorigin
     />
+    <script is:inline>
+      (() => {
+        const storageKey = "color-theme";
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+          .matches
+          ? "dark"
+          : "light";
+        let storedTheme = null;
+
+        try {
+          storedTheme = window.localStorage.getItem(storageKey);
+        } catch (error) {
+          console.warn("Unable to read the saved color theme.", error);
+        }
+
+        const theme =
+          storedTheme === "light" || storedTheme === "dark"
+            ? storedTheme
+            : systemTheme;
+
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
   </head>
   <body>
     <div class="site-shell">

@@ -8,6 +8,99 @@
     loading="eager"
     fetchpriority="high"
   />
-  <span class="identity-name">David Dossett</span>
-  <span class="identity-role">Product Designer</span>
+  <div class="identity-summary">
+    <div class="identity-details">
+      <span class="identity-name">David Dossett</span>
+      <span class="identity-role">Product Designer</span>
+    </div>
+    <button
+      class="theme-toggle"
+      type="button"
+      aria-label="Toggle color theme"
+      aria-pressed="false"
+      data-theme-toggle
+    >
+      <svg
+        class="theme-toggle-icon theme-toggle-icon-moon"
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        aria-hidden="true"
+      >
+        <path
+          d="M20.3 15.2A8.5 8.5 0 0 1 8.8 3.7 8.5 8.5 0 1 0 20.3 15.2Z"
+        ></path>
+      </svg>
+      <svg
+        class="theme-toggle-icon theme-toggle-icon-sun"
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="3.5"></circle>
+        <path
+          d="M12 2.5v2M12 19.5v2M21.5 12h-2M4.5 12h-2M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4M18.7 18.7l-1.4-1.4M6.7 6.7 5.3 5.3"
+        ></path>
+      </svg>
+    </button>
+  </div>
 </header>
+
+<script is:inline>
+  (() => {
+    const storageKey = "color-theme";
+    const root = document.documentElement;
+    const toggle = document.querySelector("[data-theme-toggle]");
+    const systemPreference = window.matchMedia("(prefers-color-scheme: dark)");
+
+    if (!(toggle instanceof HTMLButtonElement)) {
+      return;
+    }
+
+    const updateToggle = (theme) => {
+      const isDark = theme === "dark";
+      toggle.setAttribute("aria-pressed", String(isDark));
+      toggle.setAttribute(
+        "aria-label",
+        isDark ? "Switch to light theme" : "Switch to dark theme",
+      );
+      toggle.title = isDark ? "Switch to light theme" : "Switch to dark theme";
+    };
+
+    const applyTheme = (theme) => {
+      root.dataset.theme = theme;
+      root.style.colorScheme = theme;
+      updateToggle(theme);
+    };
+
+    const hasSavedTheme = () => {
+      try {
+        const theme = window.localStorage.getItem(storageKey);
+        return theme === "light" || theme === "dark";
+      } catch (error) {
+        console.warn("Unable to read the saved color theme.", error);
+        return false;
+      }
+    };
+
+    applyTheme(root.dataset.theme === "dark" ? "dark" : "light");
+
+    toggle.addEventListener("click", () => {
+      const theme = root.dataset.theme === "dark" ? "light" : "dark";
+      applyTheme(theme);
+
+      try {
+        window.localStorage.setItem(storageKey, theme);
+      } catch (error) {
+        console.warn("Unable to save the color theme.", error);
+      }
+    });
+
+    systemPreference.addEventListener("change", (event) => {
+      if (!hasSavedTheme()) {
+        applyTheme(event.matches ? "dark" : "light");
+      }
+    });
+  })();
+</script>
