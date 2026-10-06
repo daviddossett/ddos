@@ -1,13 +1,83 @@
 <header class="site-header">
-  <img
-    class="identity-avatar"
-    src="/images/david-avatar.webp"
-    alt=""
-    width="48"
-    height="48"
-    loading="eager"
-    fetchpriority="high"
-  />
+  <div class="site-header-top">
+    <img
+      class="identity-avatar"
+      src="/images/david-avatar.webp"
+      alt=""
+      width="48"
+      height="48"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <button
+      class="theme-toggle"
+      type="button"
+      aria-label="Switch color theme"
+      data-theme-toggle
+    >
+      <svg
+        class="theme-toggle-icon theme-toggle-icon-moon"
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M20.3 15.2A8.5 8.5 0 0 1 8.8 3.7 8.5 8.5 0 1 0 20.3 15.2Z"
+        ></path>
+      </svg>
+      <svg
+        class="theme-toggle-icon theme-toggle-icon-sun"
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <circle cx="12" cy="12" r="3.5"></circle>
+        <path
+          d="M12 2.5v2M12 19.5v2M21.5 12h-2M4.5 12h-2M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4M18.7 18.7l-1.4-1.4M6.7 6.7 5.3 5.3"
+        ></path>
+      </svg>
+    </button>
+  </div>
   <span class="identity-name">David Dossett</span>
   <span class="identity-role">Product Designer</span>
 </header>
+
+<script>
+  const storageKey = "theme";
+  const root = document.documentElement;
+  const toggle = document.querySelector<HTMLButtonElement>(
+    "[data-theme-toggle]",
+  );
+
+  if (toggle) {
+    const syncToggle = () => {
+      const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+      const label = `Switch to ${nextTheme} theme`;
+      toggle.setAttribute("aria-label", label);
+      toggle.title = label;
+    };
+
+    toggle.addEventListener("click", () => {
+      const theme = root.dataset.theme === "dark" ? "light" : "dark";
+      root.dataset.theme = theme;
+      root.style.colorScheme = theme;
+      syncToggle();
+
+      try {
+        window.localStorage.setItem(storageKey, theme);
+      } catch (error) {
+        console.warn("Unable to save the color theme.", error);
+      }
+    });
+
+    new MutationObserver(syncToggle).observe(root, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+    syncToggle();
+  }
+</script>

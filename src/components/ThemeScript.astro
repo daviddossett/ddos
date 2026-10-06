@@ -1,0 +1,32 @@
+<script is:inline>
+  (() => {
+    const storageKey = "theme";
+    const root = document.documentElement;
+    const systemPreference = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const readStoredTheme = () => {
+      try {
+        const theme = window.localStorage.getItem(storageKey);
+        return theme === "light" || theme === "dark" ? theme : null;
+      } catch (error) {
+        console.warn("Unable to read the saved color theme.", error);
+        return null;
+      }
+    };
+
+    const applyTheme = () => {
+      const theme =
+        readStoredTheme() ?? (systemPreference.matches ? "dark" : "light");
+      root.dataset.theme = theme;
+      root.style.colorScheme = theme;
+    };
+
+    applyTheme();
+    systemPreference.addEventListener("change", applyTheme);
+    window.addEventListener("storage", (event) => {
+      if (event.key === storageKey || event.key === null) {
+        applyTheme();
+      }
+    });
+  })();
+</script>
