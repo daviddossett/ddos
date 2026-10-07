@@ -35,6 +35,25 @@ const pageUrl = new URL(
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
 
+    <script is:inline>
+      (() => {
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+          .matches
+          ? "dark"
+          : "light";
+        let savedTheme;
+
+        try {
+          const storedTheme = localStorage.getItem("theme");
+          if (storedTheme === "light" || storedTheme === "dark") {
+            savedTheme = storedTheme;
+          }
+        } catch {}
+
+        document.documentElement.dataset.theme = savedTheme ?? systemTheme;
+      })();
+    </script>
+
     <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
     <link
       rel="preload"

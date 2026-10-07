@@ -10,4 +10,104 @@
   />
   <span class="identity-name">David Dossett</span>
   <span class="identity-role">Product Designer</span>
+  <button
+    class="theme-toggle"
+    type="button"
+    aria-label="Toggle color theme"
+    aria-pressed="false"
+    data-theme-toggle
+  >
+    <svg
+      class="theme-icon theme-icon-moon"
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.75"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M20.3 15.3A8.5 8.5 0 0 1 8.7 3.7a8.5 8.5 0 1 0 11.6 11.6Z"></path>
+    </svg>
+    <svg
+      class="theme-icon theme-icon-sun"
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.75"
+      stroke-linecap="round"
+    >
+      <circle cx="12" cy="12" r="3.5"></circle>
+      <path
+        d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+      ></path>
+    </svg>
+  </button>
 </header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+  const systemPreference = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function updateToggle(theme: "light" | "dark") {
+    if (!toggle) return;
+
+    const isDark = theme === "dark";
+    toggle.ariaPressed = String(isDark);
+    toggle.ariaLabel = `Switch to ${isDark ? "light" : "dark"} theme`;
+    toggle.title = toggle.ariaLabel;
+  }
+
+  function applyTheme(theme: "light" | "dark", persist = false) {
+    document.documentElement.dataset.theme = theme;
+    updateToggle(theme);
+
+    if (persist) {
+      try {
+        localStorage.setItem("theme", theme);
+      } catch {}
+    }
+  }
+
+  function storedTheme() {
+    try {
+      const theme = localStorage.getItem("theme");
+      return theme === "light" || theme === "dark" ? theme : null;
+    } catch {
+      return null;
+    }
+  }
+
+  const initialTheme =
+    document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+  updateToggle(initialTheme);
+
+  toggle?.addEventListener("click", () => {
+    const nextTheme =
+      document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    applyTheme(nextTheme, true);
+  });
+
+  systemPreference.addEventListener("change", (event) => {
+    if (!storedTheme()) {
+      applyTheme(event.matches ? "dark" : "light");
+    }
+  });
+
+  window.addEventListener("storage", (event) => {
+    if (event.key !== "theme") return;
+
+    const theme =
+      event.newValue === "light" || event.newValue === "dark"
+        ? event.newValue
+        : systemPreference.matches
+          ? "dark"
+          : "light";
+    applyTheme(theme);
+  });
+</script>
