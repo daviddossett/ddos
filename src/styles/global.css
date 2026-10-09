@@ -20,14 +20,14 @@
 }
 
 :root {
-  --canvas: oklch(0.985 0 0);
-  --ink: oklch(0.205 0 0);
-  --muted: oklch(0.439 0 0);
-  --quaternary: oklch(0.708 0 0);
-  --metadata: oklch(0.498 0 0);
-  --hover: oklch(0.97 0 0);
+  --canvas: oklch(0.955 0.019 138);
+  --ink: oklch(0.235 0.028 143);
+  --muted: oklch(0.425 0.036 143);
+  --quaternary: oklch(0.71 0.036 138);
+  --metadata: oklch(0.475 0.036 143);
+  --hover: oklch(0.922 0.026 138);
   --accent: oklch(0.671 0.212 34.5);
-  --selection-ink: oklch(0.145 0 0);
+  --selection-ink: oklch(0.145 0.02 143);
   color-scheme: light dark;
 }
 
@@ -159,6 +159,7 @@ a:focus-visible {
 .intro-copy a:hover,
 .footer-link:hover {
   color: var(--ink);
+  text-decoration-color: var(--accent);
 }
 
 .content-section {

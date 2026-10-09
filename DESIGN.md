@@ -2,19 +2,19 @@
 name: "My portfolio"
 description: "A quiet, text-first portfolio for David Dossett."
 colors:
-  canvas: "oklch(0.985 0 0)"
+  canvas: "oklch(0.955 0.019 138)"
   canvas-dark: "oklch(0.145 0 0)"
-  ink: "oklch(0.205 0 0)"
+  ink: "oklch(0.235 0.028 143)"
   ink-dark: "oklch(1 0 0 / 90%)"
-  muted: "oklch(0.439 0 0)"
+  muted: "oklch(0.425 0.036 143)"
   muted-dark: "oklch(1 0 0 / 70%)"
-  tertiary: "oklch(0.556 0 0)"
+  tertiary: "oklch(0.55 0.036 140)"
   tertiary-dark: "oklch(1 0 0 / 50%)"
-  quaternary: "oklch(0.708 0 0)"
+  quaternary: "oklch(0.71 0.036 138)"
   quaternary-dark: "oklch(1 0 0 / 32%)"
-  metadata: "oklch(0.498 0 0)"
+  metadata: "oklch(0.475 0.036 143)"
   metadata-dark: "oklch(1 0 0 / 60%)"
-  hover: "oklch(0.97 0 0)"
+  hover: "oklch(0.922 0.026 138)"
   hover-dark: "oklch(0.2 0 0)"
   accent: "oklch(0.671 0.212 34.5)"
 typography:
@@ -73,23 +73,23 @@ The system reads like a carefully maintained personal index: compact, direct, an
 
 ## 2. Colors
 
-The palette uses neutral light and dark ramps, with a single orange accent reserved for selection feedback. It preserves comfortable contrast without using pure white or pure black as the dominant canvas.
+Light mode uses a sage-tinted ramp: every light role shares a gentle green hue (138–143) so the canvas, text, and hover fills read as one family. Dark mode keeps its neutral ramp. The brand orange sits opposite sage on the color wheel and stays sparse: selection feedback and the underline of a hovered prose or footer link. Neither mode uses pure white or pure black as the dominant canvas.
 
 ### Primary
-- **Quiet Ink** (`oklch(0.205 0 0)`): Primary text and interactive labels.
+- **Moss Ink** (`oklch(0.235 0.028 143)`, #162215): Primary text and interactive labels. 14.6:1 on the canvas.
 - **Night Ink** (`oklch(1 0 0 / 90%)`): Primary text in dark mode.
 
 ### Neutral
-- **Soft Canvas** (`oklch(0.985 0 0)`): Light-mode page background.
+- **Sage Canvas** (`oklch(0.955 0.019 138)`, #eaf3e7): Light-mode page background.
 - **Night Canvas** (`oklch(0.145 0 0)`): Dark-mode page background.
-- **Secondary Graphite** (`oklch(0.439 0 0)`): Supporting copy in light mode.
+- **Secondary Fern** (`oklch(0.425 0.036 143)`, #435442): Supporting copy in light mode. 7.2:1 on the canvas.
 - **Secondary Silver** (`oklch(1 0 0 / 70%)`): Supporting copy in dark mode.
-- **Metadata Graphite** (`oklch(0.498 0 0)` / `oklch(1 0 0 / 60%)`): Project metadata and footer links, balanced between the secondary and tertiary tones.
-- **Tertiary Graphite** (`oklch(0.556 0 0)` / `oklch(1 0 0 / 50%)`): Available for subdued structure.
-- **Quaternary Graphite** (`oklch(0.708 0 0)` / `oklch(1 0 0 / 32%)`): Non-text decoration only because it does not meet this site's AA requirement at 16px.
-- **Quiet Hover** (`oklch(0.97 0 0)`): Hover feedback for linked rows.
+- **Metadata Fern** (`oklch(0.475 0.036 143)`, #51624f / `oklch(1 0 0 / 60%)`): Project metadata and footer links. 5.8:1 on the canvas, 5.3:1 on the hover fill.
+- **Tertiary Lichen** (`oklch(0.55 0.036 140)` / `oklch(1 0 0 / 50%)`): Available for subdued structure.
+- **Quaternary Lichen** (`oklch(0.71 0.036 138)`, #97a792 / `oklch(1 0 0 / 32%)`): Non-text decoration only because it does not meet this site's AA requirement at 16px.
+- **Sage Hover** (`oklch(0.922 0.026 138)`, #ddead9): Hover feedback for linked rows.
 - **Night Hover** (`oklch(0.2 0 0)`): Dark-mode hover feedback.
-- **Brand Orange** (`oklch(0.671 0.212 34.5)`): Selection feedback only.
+- **Brand Orange** (`oklch(0.671 0.212 34.5)`, #fc532a): Selection feedback and hovered-link underlines only. Never used for text.
 
 ### Named Rules
 
@@ -130,7 +130,7 @@ The system is flat. Depth comes from tonal hover feedback and generous separatio
 
 ### Navigation
 - The header uses a 48px circular portrait, followed by 32px of space and a two-line identity block with the name in primary ink and the role in muted ink.
-- Text links inherit surrounding typography. Prose links use a 1px dotted underline with a 4px offset, then shift to primary ink with a solid underline on hover. Project rows use a full-row hover fill.
+- Text links inherit surrounding typography. Prose links use a 1px dotted underline with a 4px offset, then shift to primary ink with a brand orange underline on hover. Project rows use a full-row hover fill.
 - The footer presents Twitter, GitHub, and LinkedIn as muted, underlined links in a horizontal row with 32px between links and the standard section gap above it.
 - All interactive elements use a visible 2px neutral focus outline with a 2px offset.
 
