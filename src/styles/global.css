@@ -33,12 +33,12 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --canvas: oklch(0.145 0 0);
-    --ink: oklch(1 0 0 / 90%);
-    --muted: oklch(1 0 0 / 70%);
-    --quaternary: oklch(1 0 0 / 32%);
-    --metadata: oklch(1 0 0 / 60%);
-    --hover: oklch(0.2 0 0);
+    --canvas: oklch(0.19 0.03 263);
+    --ink: oklch(0.94 0.012 255);
+    --muted: oklch(0.8 0.02 258);
+    --quaternary: oklch(0.47 0.03 260);
+    --metadata: oklch(0.74 0.022 258);
+    --hover: oklch(0.24 0.034 263);
   }
 }
 
