@@ -20,14 +20,14 @@
 }
 
 :root {
-  --canvas: oklch(0.985 0 0);
-  --ink: oklch(0.205 0 0);
-  --muted: oklch(0.439 0 0);
-  --quaternary: oklch(0.708 0 0);
-  --metadata: oklch(0.498 0 0);
-  --hover: oklch(0.97 0 0);
-  --accent: oklch(0.671 0.212 34.5);
-  --selection-ink: oklch(0.145 0 0);
+  --canvas: oklch(0.977 0.009 80);
+  --ink: oklch(0.235 0.018 50);
+  --muted: oklch(0.455 0.024 55);
+  --quaternary: oklch(0.72 0.02 70);
+  --metadata: oklch(0.51 0.024 60);
+  --hover: oklch(0.951 0.014 76);
+  --accent: oklch(0.68 0.165 45);
+  --selection-ink: oklch(0.18 0.02 45);
   color-scheme: light dark;
 }
 
