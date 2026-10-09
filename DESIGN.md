@@ -2,19 +2,19 @@
 name: "My portfolio"
 description: "A quiet, text-first portfolio for David Dossett."
 colors:
-  canvas: "oklch(0.985 0 0)"
+  canvas: "oklch(0.978 0.012 85)"
   canvas-dark: "oklch(0.145 0 0)"
-  ink: "oklch(0.205 0 0)"
+  ink: "oklch(0.235 0.014 60)"
   ink-dark: "oklch(1 0 0 / 90%)"
-  muted: "oklch(0.439 0 0)"
+  muted: "oklch(0.455 0.018 65)"
   muted-dark: "oklch(1 0 0 / 70%)"
   tertiary: "oklch(0.556 0 0)"
   tertiary-dark: "oklch(1 0 0 / 50%)"
-  quaternary: "oklch(0.708 0 0)"
+  quaternary: "oklch(0.72 0.022 75)"
   quaternary-dark: "oklch(1 0 0 / 32%)"
-  metadata: "oklch(0.498 0 0)"
+  metadata: "oklch(0.515 0.02 68)"
   metadata-dark: "oklch(1 0 0 / 60%)"
-  hover: "oklch(0.97 0 0)"
+  hover: "oklch(0.955 0.016 82)"
   hover-dark: "oklch(0.2 0 0)"
   accent: "oklch(0.671 0.212 34.5)"
 typography:
@@ -73,21 +73,21 @@ The system reads like a carefully maintained personal index: compact, direct, an
 
 ## 2. Colors
 
-The palette uses neutral light and dark ramps, with a single orange accent reserved for selection feedback. It preserves comfortable contrast without using pure white or pure black as the dominant canvas.
+The palette uses a warm-paper light ramp (cream canvas, brown-tinted grays) and a neutral dark ramp, with a single orange accent reserved for selection feedback. It preserves comfortable contrast without using pure white or pure black as the dominant canvas.
 
 ### Primary
-- **Quiet Ink** (`oklch(0.205 0 0)`): Primary text and interactive labels.
+- **Quiet Ink** (`oklch(0.235 0.014 60)`): Primary text and interactive labels.
 - **Night Ink** (`oklch(1 0 0 / 90%)`): Primary text in dark mode.
 
 ### Neutral
-- **Soft Canvas** (`oklch(0.985 0 0)`): Light-mode page background.
+- **Warm Paper** (`oklch(0.978 0.012 85)`): Light-mode page background, a soft cream.
 - **Night Canvas** (`oklch(0.145 0 0)`): Dark-mode page background.
-- **Secondary Graphite** (`oklch(0.439 0 0)`): Supporting copy in light mode.
+- **Secondary Umber** (`oklch(0.455 0.018 65)`): Supporting copy in light mode.
 - **Secondary Silver** (`oklch(1 0 0 / 70%)`): Supporting copy in dark mode.
-- **Metadata Graphite** (`oklch(0.498 0 0)` / `oklch(1 0 0 / 60%)`): Project metadata and footer links, balanced between the secondary and tertiary tones.
+- **Metadata Umber** (`oklch(0.515 0.02 68)` / `oklch(1 0 0 / 60%)`): Project metadata and footer links, balanced between the secondary and tertiary tones.
 - **Tertiary Graphite** (`oklch(0.556 0 0)` / `oklch(1 0 0 / 50%)`): Available for subdued structure.
-- **Quaternary Graphite** (`oklch(0.708 0 0)` / `oklch(1 0 0 / 32%)`): Non-text decoration only because it does not meet this site's AA requirement at 16px.
-- **Quiet Hover** (`oklch(0.97 0 0)`): Hover feedback for linked rows.
+- **Quaternary Sand** (`oklch(0.72 0.022 75)` / `oklch(1 0 0 / 32%)`): Non-text decoration only because it does not meet this site's AA requirement at 16px.
+- **Quiet Hover** (`oklch(0.955 0.016 82)`): Hover feedback for linked rows.
 - **Night Hover** (`oklch(0.2 0 0)`): Dark-mode hover feedback.
 - **Brand Orange** (`oklch(0.671 0.212 34.5)`): Selection feedback only.
 
