@@ -8,8 +8,7 @@
 # testing
 /coverage
 
-# Astro
-/.astro/
+# Eleventy
 /dist/
 
 # misc

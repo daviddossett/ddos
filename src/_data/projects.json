@@ -1,0 +1,32 @@
+[
+  {
+    "title": "GitHub Copilot app",
+    "description": "Parallel agentic coding with native GitHub context",
+    "href": "https://github.com/features/ai/github-app"
+  },
+  {
+    "title": "GitHub Copilot CLI",
+    "description": "Coding agent built for the terminal",
+    "href": "https://github.com/features/copilot/cli"
+  },
+  {
+    "title": "Ace",
+    "description": "Multiplayer agentic coding prototype",
+    "href": "https://githubnext.com/talks/one-developer-two-dozen-agents-zero-alignment/"
+  },
+  {
+    "title": "GitHub Models",
+    "description": "Evaluate and improve your LLM prompts",
+    "href": "https://github.com/features/models"
+  },
+  {
+    "title": "GitHub Spark",
+    "description": "Build and ship full-stack apps",
+    "href": "https://github.com/features/spark"
+  },
+  {
+    "title": "VS Code",
+    "description": "The open source AI code editor",
+    "href": "https://code.visualstudio.com/"
+  }
+]
