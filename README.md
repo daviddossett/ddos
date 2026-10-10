@@ -1,4 +1,5 @@
-David Dossett's personal website, built with Astro and deployed as a static site.
+David Dossett's personal website, built with SvelteKit and deployed as a fully
+prerendered static site (via `@sveltejs/adapter-static`, no client-side JS).
 
 ## Development
 
@@ -7,5 +8,8 @@ npm install
 npm run dev
 ```
 
-Run `npm run lint` to check the project and `npm run build` to create the
-production site in `dist/`.
+Run `npm run lint` to type-check the project (`svelte-check`) and
+`npm run build` to create the production site in `dist/`. Use
+`npm run preview` to serve the built output locally.
+
+Static assets (fonts, images, favicons, `CNAME`) live in `static/`.

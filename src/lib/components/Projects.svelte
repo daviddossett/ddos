@@ -1,0 +1,59 @@
+<script lang="ts">
+  interface Project {
+    title: string;
+    description: string;
+    href: string;
+  }
+
+  const projects: Project[] = [
+    {
+      title: "GitHub Copilot app",
+      description: "Parallel agentic coding with native GitHub context",
+      href: "https://github.com/features/ai/github-app",
+    },
+    {
+      title: "GitHub Copilot CLI",
+      description: "Coding agent built for the terminal",
+      href: "https://github.com/features/copilot/cli",
+    },
+    {
+      title: "Ace",
+      description: "Multiplayer agentic coding prototype",
+      href: "https://githubnext.com/talks/one-developer-two-dozen-agents-zero-alignment/",
+    },
+    {
+      title: "GitHub Models",
+      description: "Evaluate and improve your LLM prompts",
+      href: "https://github.com/features/models",
+    },
+    {
+      title: "GitHub Spark",
+      description: "Build and ship full-stack apps",
+      href: "https://github.com/features/spark",
+    },
+    {
+      title: "VS Code",
+      description: "The open source AI code editor",
+      href: "https://code.visualstudio.com/",
+    },
+  ];
+</script>
+
+<section class="content-section" aria-labelledby="projects-heading">
+  <h2 id="projects-heading" class="section-title">Projects</h2>
+  <ul class="entry-list">
+    {#each projects as { title, description, href } (href)}
+      <li>
+        <a
+          class="entry entry-row entry-link"
+          {href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="entry-title">{title}</span>
+          <span class="entry-description">{description}</span>
+        </a>
+      </li>
+    {/each}
+  </ul>
+</section>
