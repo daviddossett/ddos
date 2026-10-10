@@ -3,20 +3,21 @@ name: "My portfolio"
 description: "A quiet, text-first portfolio for David Dossett."
 colors:
   canvas: "oklch(0.985 0 0)"
-  canvas-dark: "oklch(0.145 0 0)"
+  canvas-dark: "oklch(0.175 0.009 60)"
   ink: "oklch(0.205 0 0)"
-  ink-dark: "oklch(1 0 0 / 90%)"
+  ink-dark: "oklch(0.93 0.014 80)"
   muted: "oklch(0.439 0 0)"
-  muted-dark: "oklch(1 0 0 / 70%)"
+  muted-dark: "oklch(0.8 0.014 75)"
   tertiary: "oklch(0.556 0 0)"
-  tertiary-dark: "oklch(1 0 0 / 50%)"
+  tertiary-dark: "oklch(0.62 0.014 70)"
   quaternary: "oklch(0.708 0 0)"
-  quaternary-dark: "oklch(1 0 0 / 32%)"
+  quaternary-dark: "oklch(0.5 0.014 65)"
   metadata: "oklch(0.498 0 0)"
-  metadata-dark: "oklch(1 0 0 / 60%)"
+  metadata-dark: "oklch(0.72 0.014 70)"
   hover: "oklch(0.97 0 0)"
-  hover-dark: "oklch(0.2 0 0)"
+  hover-dark: "oklch(0.225 0.011 60)"
   accent: "oklch(0.671 0.212 34.5)"
+  accent-dark: "oklch(0.76 0.13 62)"
 typography:
   title:
     fontFamily: "Sans, Sans Fallback, sans-serif"
@@ -73,23 +74,23 @@ The system reads like a carefully maintained personal index: compact, direct, an
 
 ## 2. Colors
 
-The palette uses neutral light and dark ramps, with a single orange accent reserved for selection feedback. It preserves comfortable contrast without using pure white or pure black as the dominant canvas.
+The palette uses a neutral light ramp and a warm charcoal dark ramp (low-chroma, hue ~60–80), with a single orange accent reserved for selection feedback; dark mode shifts it to a softer amber. It preserves comfortable contrast without using pure white or pure black as the dominant canvas.
 
 ### Primary
 - **Quiet Ink** (`oklch(0.205 0 0)`): Primary text and interactive labels.
-- **Night Ink** (`oklch(1 0 0 / 90%)`): Primary text in dark mode.
+- **Night Ink** (`oklch(0.93 0.014 80)`): Warm off-white primary text in dark mode.
 
 ### Neutral
 - **Soft Canvas** (`oklch(0.985 0 0)`): Light-mode page background.
-- **Night Canvas** (`oklch(0.145 0 0)`): Dark-mode page background.
+- **Night Canvas** (`oklch(0.175 0.009 60)`): Warm charcoal dark-mode page background.
 - **Secondary Graphite** (`oklch(0.439 0 0)`): Supporting copy in light mode.
-- **Secondary Silver** (`oklch(1 0 0 / 70%)`): Supporting copy in dark mode.
-- **Metadata Graphite** (`oklch(0.498 0 0)` / `oklch(1 0 0 / 60%)`): Project metadata and footer links, balanced between the secondary and tertiary tones.
-- **Tertiary Graphite** (`oklch(0.556 0 0)` / `oklch(1 0 0 / 50%)`): Available for subdued structure.
-- **Quaternary Graphite** (`oklch(0.708 0 0)` / `oklch(1 0 0 / 32%)`): Non-text decoration only because it does not meet this site's AA requirement at 16px.
+- **Secondary Sand** (`oklch(0.8 0.014 75)`): Supporting copy in dark mode.
+- **Metadata Graphite** (`oklch(0.498 0 0)` / `oklch(0.72 0.014 70)`): Project metadata and footer links, balanced between the secondary and tertiary tones.
+- **Tertiary Graphite** (`oklch(0.556 0 0)` / `oklch(0.62 0.014 70)`): Available for subdued structure.
+- **Quaternary Graphite** (`oklch(0.708 0 0)` / `oklch(0.5 0.014 65)`): Non-text decoration only because it does not meet this site's AA requirement at 16px.
 - **Quiet Hover** (`oklch(0.97 0 0)`): Hover feedback for linked rows.
-- **Night Hover** (`oklch(0.2 0 0)`): Dark-mode hover feedback.
-- **Brand Orange** (`oklch(0.671 0.212 34.5)`): Selection feedback only.
+- **Night Hover** (`oklch(0.225 0.011 60)`): Dark-mode hover feedback.
+- **Brand Orange** (`oklch(0.671 0.212 34.5)`, dark: amber `oklch(0.76 0.13 62)`): Selection feedback only.
 
 ### Named Rules
 
