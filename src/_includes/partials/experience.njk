@@ -1,0 +1,11 @@
+<section class="content-section" aria-labelledby="experience-heading">
+  <h2 id="experience-heading" class="section-title">Experience</h2>
+  <ul class="entry-list">
+    {%- for role in experience %}
+    <li class="entry entry-row">
+      <span class="entry-title">{{ role.title }}</span>
+      <span class="entry-description">{{ role.company }}, {{ role.description }}</span>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>

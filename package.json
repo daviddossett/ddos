@@ -3,17 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "start": "astro dev",
-    "lint": "astro check",
-    "preview": "astro preview"
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "lint": "eleventy --dryrun --quiet",
+    "preview": "eleventy-dev-server --dir=dist"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.9",
-    "typescript": "^6.0.3"
+    "@11ty/eleventy": "^3.1.6",
+    "lightningcss": "^1.33.0"
   },
-  "dependencies": {
-    "astro": "^7.1.3"
-  }
+  "type": "module"
 }
