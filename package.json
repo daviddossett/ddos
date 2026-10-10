@@ -2,18 +2,25 @@
   "name": "daviddossett",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "start": "astro dev",
-    "lint": "astro check",
-    "preview": "astro preview"
+    "dev": "vite dev",
+    "build": "vite build",
+    "start": "vite dev",
+    "lint": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "preview": "vite preview",
+    "prepare": "svelte-kit sync || echo ''"
+  },
+  "imports": {
+    "#lib/*": "./src/lib/*"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.9",
-    "typescript": "^6.0.3"
-  },
-  "dependencies": {
-    "astro": "^7.1.3"
+    "@sveltejs/adapter-static": "^4.0.0",
+    "@sveltejs/kit": "^3.0.0",
+    "@sveltejs/vite-plugin-svelte": "^7.3.1",
+    "svelte": "^5.57.1",
+    "svelte-check": "^4.7.6",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.2"
   }
 }

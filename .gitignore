@@ -8,8 +8,8 @@
 # testing
 /coverage
 
-# Astro
-/.astro/
+# SvelteKit
+/.svelte-kit/
 /dist/
 
 # misc
