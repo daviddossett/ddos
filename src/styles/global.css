@@ -33,12 +33,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --canvas: oklch(0.145 0 0);
-    --ink: oklch(1 0 0 / 90%);
-    --muted: oklch(1 0 0 / 70%);
-    --quaternary: oklch(1 0 0 / 32%);
-    --metadata: oklch(1 0 0 / 60%);
-    --hover: oklch(0.2 0 0);
+    --canvas: oklch(0 0 0);
+    --ink: oklch(0.97 0 0);
+    --muted: oklch(0.8 0 0);
+    --quaternary: oklch(0.4 0 0);
+    --metadata: oklch(0.7 0 0);
+    --hover: oklch(0.17 0 0);
+    --border: oklch(0.27 0 0);
+    --accent: oklch(0.72 0.21 38);
   }
 }
 
@@ -274,5 +276,20 @@ a:focus-visible {
 @media (min-width: 48rem) {
   .site-shell {
     padding-top: 4rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  a:hover {
+    text-decoration-color: var(--accent);
+  }
+
+  a:focus-visible {
+    outline-color: var(--accent);
+  }
+
+  .entry-link:hover {
+    outline: 1px solid var(--border);
+    outline-offset: -1px;
   }
 }
