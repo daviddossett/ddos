@@ -2,21 +2,21 @@
 name: "My portfolio"
 description: "A quiet, text-first portfolio for David Dossett."
 colors:
-  canvas: "oklch(0.985 0 0)"
-  canvas-dark: "oklch(0.145 0 0)"
-  ink: "oklch(0.205 0 0)"
-  ink-dark: "oklch(1 0 0 / 90%)"
-  muted: "oklch(0.439 0 0)"
-  muted-dark: "oklch(1 0 0 / 70%)"
-  tertiary: "oklch(0.556 0 0)"
-  tertiary-dark: "oklch(1 0 0 / 50%)"
-  quaternary: "oklch(0.708 0 0)"
-  quaternary-dark: "oklch(1 0 0 / 32%)"
-  metadata: "oklch(0.498 0 0)"
-  metadata-dark: "oklch(1 0 0 / 60%)"
-  hover: "oklch(0.97 0 0)"
-  hover-dark: "oklch(0.2 0 0)"
-  accent: "oklch(0.671 0.212 34.5)"
+  canvas: "oklch(0.955 0.028 185)"
+  canvas-dark: "oklch(0.215 0.045 205)"
+  ink: "oklch(0.25 0.045 205)"
+  ink-dark: "oklch(0.95 0.015 180)"
+  muted: "oklch(0.42 0.045 205)"
+  muted-dark: "oklch(0.82 0.03 185)"
+  quaternary: "oklch(0.74 0.03 195)"
+  quaternary-dark: "oklch(0.47 0.045 200)"
+  metadata: "oklch(0.47 0.04 205)"
+  metadata-dark: "oklch(0.76 0.04 190)"
+  hover: "oklch(0.915 0.042 182)"
+  hover-dark: "oklch(0.265 0.052 203)"
+  accent: "oklch(0.52 0.18 35)"
+  accent-dark: "oklch(0.77 0.14 45)"
+  selection: "oklch(0.671 0.212 34.5)"
 typography:
   title:
     fontFamily: "Sans, Sans Fallback, sans-serif"
@@ -73,27 +73,27 @@ The system reads like a carefully maintained personal index: compact, direct, an
 
 ## 2. Colors
 
-The palette uses neutral light and dark ramps, with a single orange accent reserved for selection feedback. It preserves comfortable contrast without using pure white or pure black as the dominant canvas.
+**Spruce & Persimmon.** Neutrals are tinted toward a Pacific Northwest evergreen (hue 180–205) instead of gray: a sea-glass canvas by day and a deep spruce canvas by night. A persimmon accent, derived from the original brand orange, carries the personality. Every text role meets WCAG AA on both the canvas and the hover fill.
 
 ### Primary
-- **Quiet Ink** (`oklch(0.205 0 0)`): Primary text and interactive labels.
-- **Night Ink** (`oklch(1 0 0 / 90%)`): Primary text in dark mode.
+- **Spruce Ink** (`oklch(0.25 0.045 205)`): Primary text and interactive labels.
+- **Fog Ink** (`oklch(0.95 0.015 180)`): Primary text in dark mode.
+
+### Accent
+- **Persimmon** (`oklch(0.52 0.18 35)` / dark `oklch(0.77 0.14 45)`): Section titles, link underlines (45% alpha at rest, solid on hover), hovered project titles, focus outlines, the avatar ring, and the 404 divider.
+- **Brand Orange** (`oklch(0.671 0.212 34.5)`): Light-mode text selection. Dark mode selects with the dark persimmon.
 
 ### Neutral
-- **Soft Canvas** (`oklch(0.985 0 0)`): Light-mode page background.
-- **Night Canvas** (`oklch(0.145 0 0)`): Dark-mode page background.
-- **Secondary Graphite** (`oklch(0.439 0 0)`): Supporting copy in light mode.
-- **Secondary Silver** (`oklch(1 0 0 / 70%)`): Supporting copy in dark mode.
-- **Metadata Graphite** (`oklch(0.498 0 0)` / `oklch(1 0 0 / 60%)`): Project metadata and footer links, balanced between the secondary and tertiary tones.
-- **Tertiary Graphite** (`oklch(0.556 0 0)` / `oklch(1 0 0 / 50%)`): Available for subdued structure.
-- **Quaternary Graphite** (`oklch(0.708 0 0)` / `oklch(1 0 0 / 32%)`): Non-text decoration only because it does not meet this site's AA requirement at 16px.
-- **Quiet Hover** (`oklch(0.97 0 0)`): Hover feedback for linked rows.
-- **Night Hover** (`oklch(0.2 0 0)`): Dark-mode hover feedback.
-- **Brand Orange** (`oklch(0.671 0.212 34.5)`): Selection feedback only.
+- **Sea Glass** (`oklch(0.955 0.028 185)`): Light-mode page background.
+- **Evergreen Night** (`oklch(0.215 0.045 205)`): Dark-mode page background.
+- **Secondary Spruce** (`oklch(0.42 0.045 205)` / `oklch(0.82 0.03 185)`): Supporting copy.
+- **Metadata Spruce** (`oklch(0.47 0.04 205)` / `oklch(0.76 0.04 190)`): Project metadata and footer links.
+- **Quaternary** (`oklch(0.74 0.03 195)` / `oklch(0.47 0.045 200)`): Non-text decoration only.
+- **Tide Hover** (`oklch(0.915 0.042 182)` / `oklch(0.265 0.052 203)`): Hover fill for linked rows.
 
 ### Named Rules
 
-**The Content-First Rule.** Color clarifies state and hierarchy; it does not decorate sections.
+**The Content-First Rule.** Color clarifies state and hierarchy; the accent marks structure and interaction, never whole surfaces.
 
 ## 3. Typography
 
@@ -129,10 +129,10 @@ The system is flat. Depth comes from tonal hover feedback and generous separatio
 - **Internal Padding:** 12px on all sides at desktop sizes.
 
 ### Navigation
-- The header uses a 48px circular portrait, followed by 32px of space and a two-line identity block with the name in primary ink and the role in muted ink.
-- Text links inherit surrounding typography. Prose links use a 1px dotted underline with a 4px offset, then shift to primary ink with a solid underline on hover. Project rows use a full-row hover fill.
+- The header uses a 48px circular portrait with a 2px persimmon ring (offset by 2px of canvas), followed by 32px of space and a two-line identity block with the name in primary ink and the role in muted ink.
+- Text links inherit surrounding typography. Prose links use a 2px translucent persimmon underline with a 2px offset, then shift to primary ink with a solid persimmon underline on hover. Project rows use a full-row tide hover fill and the title turns persimmon.
 - The footer presents Twitter, GitHub, and LinkedIn as muted, underlined links in a horizontal row with 32px between links and the standard section gap above it.
-- All interactive elements use a visible 2px neutral focus outline with a 2px offset.
+- All interactive elements use a visible 2px persimmon focus outline with a 2px offset.
 
 ### Project Entry
 
@@ -143,7 +143,7 @@ Project entries pair a regular-weight title with one line of muted context. On m
 ### Do:
 - **Do** keep the page measure at 692px with 24px horizontal padding.
 - **Do** separate major sections by 96–128px and keep related lines within 8–16px.
-- **Do** use the primary and secondary neutral roles for readable light-mode hierarchy.
+- **Do** use the primary and secondary spruce roles for readable hierarchy, and reserve persimmon for titles and interaction.
 - **Do** preserve visible keyboard focus and reduced-motion behavior.
 
 ### Don't:
