@@ -42,6 +42,31 @@
   }
 }
 
+/* Kiln variant: neutrals tinted toward the brand orange, terracotta underlines. */
+:root[data-theme="kiln"] {
+  --canvas: oklch(0.975 0.008 35);
+  --ink: oklch(0.24 0.03 35);
+  --muted: oklch(0.44 0.035 35);
+  --quaternary: oklch(0.74 0.03 35);
+  --metadata: oklch(0.5 0.035 35);
+  --hover: oklch(0.945 0.016 35);
+  --accent: oklch(0.68 0.16 38);
+  --selection-ink: oklch(0.18 0.03 35);
+  --link-underline: color-mix(in oklch, var(--accent) 55%, var(--canvas));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="kiln"] {
+    --canvas: oklch(0.17 0.014 35);
+    --ink: oklch(0.94 0.012 55);
+    --muted: oklch(0.8 0.02 50);
+    --quaternary: oklch(0.45 0.03 40);
+    --metadata: oklch(0.72 0.022 45);
+    --hover: oklch(0.215 0.02 35);
+    --link-underline: color-mix(in oklch, var(--accent) 50%, var(--canvas));
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -73,10 +98,9 @@ a {
 
 a {
   text-decoration-line: underline;
-  text-decoration-color: color-mix(
-    in oklch,
-    var(--hover) 70%,
-    var(--quaternary)
+  text-decoration-color: var(
+    --link-underline,
+    color-mix(in oklch, var(--hover) 70%, var(--quaternary))
   );
   text-decoration-style: solid;
   text-decoration-thickness: 2px;

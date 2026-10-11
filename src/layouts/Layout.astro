@@ -35,6 +35,27 @@ const pageUrl = new URL(
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
 
+    <script is:inline>
+      (() => {
+        const themes = ["kiln"];
+        const key = "theme-variant";
+        const requested = new URLSearchParams(location.search).get("theme");
+        let theme = requested;
+        try {
+          if (requested === null) {
+            theme = localStorage.getItem(key);
+          } else if (themes.includes(requested)) {
+            localStorage.setItem(key, requested);
+          } else {
+            localStorage.removeItem(key);
+          }
+        } catch {}
+        if (themes.includes(theme)) {
+          document.documentElement.dataset.theme = theme;
+        }
+      })();
+    </script>
+
     <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
     <link
       rel="preload"
