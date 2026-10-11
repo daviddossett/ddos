@@ -95,7 +95,7 @@ The palette uses neutral light and dark ramps, with a single orange accent reser
 
 The neutral palette above is the default. Variants override the same tokens under `:root[data-theme="<name>"]`, with light and dark values following `prefers-color-scheme`. Visiting `?theme=<name>` opts in (persisted in `localStorage`); `?theme=default` clears it.
 
-- **Cobalt** (`data-theme="cobalt"`): Cool blue-tinted neutrals (hue ~250–262) with higher-contrast ink, cobalt-tinted link underlines, and a cobalt selection accent (`oklch(0.55 0.2 262)` light, `oklch(0.74 0.14 252)` dark). All text roles exceed AA; quaternary remains decoration-only.
+- **Cobalt** (`data-theme="cobalt"`): Higher-contrast ink over tinted neutrals. Light mode uses cool blue-tinted neutrals (hue ~250–262) with a cobalt selection accent (`oklch(0.55 0.2 262)`). Dark mode shifts to a pink-tinted night palette (hue ~350) with a soft pink accent (`oklch(0.78 0.13 352)`). Link underlines take each mode's hue. All text roles exceed AA; quaternary remains decoration-only.
 
 ### Named Rules
 
