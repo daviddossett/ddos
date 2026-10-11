@@ -23,6 +23,21 @@ const pageUrl = new URL(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      // Opt into a theme variant with ?theme=<name>; ?theme=default clears it.
+      try {
+        const requested = new URLSearchParams(location.search).get("theme");
+        if (requested === "default" || requested === "") {
+          localStorage.removeItem("theme");
+        } else if (requested) {
+          localStorage.setItem("theme", requested);
+        }
+        const theme = localStorage.getItem("theme");
+        if (theme && /^[a-z0-9-]+$/.test(theme)) {
+          document.documentElement.dataset.theme = theme;
+        }
+      } catch {}
+    </script>
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
 

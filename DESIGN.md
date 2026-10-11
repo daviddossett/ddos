@@ -91,6 +91,12 @@ The palette uses neutral light and dark ramps, with a single orange accent reser
 - **Night Hover** (`oklch(0.2 0 0)`): Dark-mode hover feedback.
 - **Brand Orange** (`oklch(0.671 0.212 34.5)`): Selection feedback only.
 
+### Theme Variants
+
+The neutral palette above is the default. Variants override the same tokens under `:root[data-theme="<name>"]`, with light and dark values following `prefers-color-scheme`. Visiting `?theme=<name>` opts in (persisted in `localStorage`); `?theme=default` clears it.
+
+- **Cobalt** (`data-theme="cobalt"`): Higher-contrast ink over tinted neutrals. Light mode uses cool blue-tinted neutrals (hue ~250–262) with a cobalt selection accent (`oklch(0.55 0.2 262)`). Dark mode shifts to a pink-tinted night palette (hue ~350) with a soft pink accent (`oklch(0.78 0.13 352)`). Link underlines take each mode's hue. All text roles exceed AA; quaternary remains decoration-only.
+
 ### Named Rules
 
 **The Content-First Rule.** Color clarifies state and hierarchy; it does not decorate sections.
