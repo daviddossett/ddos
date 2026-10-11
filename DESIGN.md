@@ -99,7 +99,7 @@ The palette uses neutral light and dark ramps, with a single orange accent reser
 
 The neutral palette above is the default. Alternate palettes are opt-in token sets on `:root[data-theme="…"]` in `src/styles/global.css`, each with light and dark modes driven by `prefers-color-scheme`. Select one with `?theme=<name>` (persisted in `localStorage`); any unknown value, such as `?theme=default`, clears it.
 
-- **Kiln** (`kiln`): Fired-clay neutrals tinted toward the Brand Orange hue (35). Light mode uses a warm off-white canvas (`oklch(0.975 0.008 35)`) with clay-brown ink (`oklch(0.24 0.03 35)`); dark mode uses an espresso-clay canvas (`oklch(0.17 0.014 35)`) with warm off-white ink. Link underlines are terracotta (`--link-underline`, the accent mixed into the canvas). All text roles meet AA; Quaternary remains non-text only.
+- **Kiln** (`kiln`): Fired-clay neutrals tinted toward the Brand Orange hue (35). Light mode uses an apricot canvas (`oklch(0.925 0.055 55)`) with burnt-brown ink (`oklch(0.25 0.05 45)`) and deep terracotta underlines; dark mode uses an espresso-clay canvas (`oklch(0.17 0.014 35)`) with warm off-white ink. Link underlines are terracotta (`--link-underline`, the accent mixed into the canvas). All text roles meet AA; Quaternary remains non-text only.
 
 ## 3. Typography
 
