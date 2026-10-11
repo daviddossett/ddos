@@ -42,6 +42,31 @@
   }
 }
 
+/* Variant B, "Cobalt": cool blue-tinted neutrals, higher-contrast ink, cobalt accent. */
+:root[data-theme="cobalt"] {
+  --canvas: oklch(0.982 0.005 250);
+  --ink: oklch(0.17 0.03 262);
+  --muted: oklch(0.4 0.035 258);
+  --quaternary: oklch(0.72 0.06 258);
+  --metadata: oklch(0.47 0.03 256);
+  --hover: oklch(0.95 0.012 252);
+  --accent: oklch(0.55 0.2 262);
+  --selection-ink: oklch(0.99 0.004 250);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="cobalt"] {
+    --canvas: oklch(0.155 0.022 262);
+    --ink: oklch(0.96 0.008 250);
+    --muted: oklch(0.8 0.022 252);
+    --quaternary: oklch(0.5 0.07 260);
+    --metadata: oklch(0.72 0.026 254);
+    --hover: oklch(0.215 0.03 262);
+    --accent: oklch(0.74 0.14 252);
+    --selection-ink: oklch(0.155 0.022 262);
+  }
+}
+
 * {
   box-sizing: border-box;
 }
