@@ -35,6 +35,16 @@ const pageUrl = new URL(
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
 
+    <meta
+      name="theme-color"
+      content="oklch(0.984 0.003 70)"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="oklch(0.175 0.005 55)"
+      media="(prefers-color-scheme: dark)"
+    />
     <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
     <link
       rel="preload"

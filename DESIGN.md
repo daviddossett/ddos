@@ -2,21 +2,20 @@
 name: "My portfolio"
 description: "A quiet, text-first portfolio for David Dossett."
 colors:
-  canvas: "oklch(0.985 0 0)"
-  canvas-dark: "oklch(0.145 0 0)"
-  ink: "oklch(0.205 0 0)"
-  ink-dark: "oklch(1 0 0 / 90%)"
-  muted: "oklch(0.439 0 0)"
-  muted-dark: "oklch(1 0 0 / 70%)"
-  tertiary: "oklch(0.556 0 0)"
-  tertiary-dark: "oklch(1 0 0 / 50%)"
-  quaternary: "oklch(0.708 0 0)"
-  quaternary-dark: "oklch(1 0 0 / 32%)"
-  metadata: "oklch(0.498 0 0)"
-  metadata-dark: "oklch(1 0 0 / 60%)"
-  hover: "oklch(0.97 0 0)"
-  hover-dark: "oklch(0.2 0 0)"
-  accent: "oklch(0.671 0.212 34.5)"
+  canvas: "oklch(0.984 0.003 70)"
+  canvas-dark: "oklch(0.175 0.005 55)"
+  ink: "oklch(0.225 0.008 50)"
+  ink-dark: "oklch(0.925 0.007 75)"
+  muted: "oklch(0.455 0.011 55)"
+  muted-dark: "oklch(0.79 0.009 70)"
+  quaternary: "oklch(0.8 0.008 60)"
+  quaternary-dark: "oklch(0.42 0.008 55)"
+  metadata: "oklch(0.525 0.01 58)"
+  metadata-dark: "oklch(0.7 0.01 65)"
+  hover: "oklch(0.958 0.005 65)"
+  hover-dark: "oklch(0.215 0.007 55)"
+  accent: "oklch(0.585 0.125 42)"
+  accent-dark: "oklch(0.76 0.075 50)"
 typography:
   title:
     fontFamily: "Sans, Sans Fallback, sans-serif"
@@ -73,27 +72,28 @@ The system reads like a carefully maintained personal index: compact, direct, an
 
 ## 2. Colors
 
-The palette uses neutral light and dark ramps, with a single orange accent reserved for selection feedback. It preserves comfortable contrast without using pure white or pure black as the dominant canvas.
+"Warm Graphite": neutral ramps tinted very slightly (chroma ≤ 0.011) toward the brand's own orange hue, so the page reads as graphite on soft stone rather than pure gray, without drifting into cream. A muted clay accent appears only at the moments of interaction: link underlines, focus rings, and text selection. It never fills a surface.
 
 ### Primary
-- **Quiet Ink** (`oklch(0.205 0 0)`): Primary text and interactive labels.
-- **Night Ink** (`oklch(1 0 0 / 90%)`): Primary text in dark mode.
+- **Graphite Ink** (`oklch(0.225 0.008 50)`): Primary text and interactive labels. 16.3:1 on canvas.
+- **Night Ink** (`oklch(0.925 0.007 75)`): Primary text in dark mode. 15:1 on canvas.
 
 ### Neutral
-- **Soft Canvas** (`oklch(0.985 0 0)`): Light-mode page background.
-- **Night Canvas** (`oklch(0.145 0 0)`): Dark-mode page background.
-- **Secondary Graphite** (`oklch(0.439 0 0)`): Supporting copy in light mode.
-- **Secondary Silver** (`oklch(1 0 0 / 70%)`): Supporting copy in dark mode.
-- **Metadata Graphite** (`oklch(0.498 0 0)` / `oklch(1 0 0 / 60%)`): Project metadata and footer links, balanced between the secondary and tertiary tones.
-- **Tertiary Graphite** (`oklch(0.556 0 0)` / `oklch(1 0 0 / 50%)`): Available for subdued structure.
-- **Quaternary Graphite** (`oklch(0.708 0 0)` / `oklch(1 0 0 / 32%)`): Non-text decoration only because it does not meet this site's AA requirement at 16px.
-- **Quiet Hover** (`oklch(0.97 0 0)`): Hover feedback for linked rows.
-- **Night Hover** (`oklch(0.2 0 0)`): Dark-mode hover feedback.
-- **Brand Orange** (`oklch(0.671 0.212 34.5)`): Selection feedback only.
+- **Stone Canvas** (`oklch(0.984 0.003 70)`): Light-mode page background.
+- **Ember Canvas** (`oklch(0.175 0.005 55)`): Dark-mode page background, a warm charcoal rather than black.
+- **Secondary** (`oklch(0.455 0.011 55)` / `oklch(0.79 0.009 70)`): Supporting copy. 7:1 / 9.6:1.
+- **Metadata** (`oklch(0.525 0.01 58)` / `oklch(0.7 0.01 65)`): Project metadata and footer links. ≥4.7:1 on both canvas and hover fill.
+- **Quaternary** (`oklch(0.8 0.008 60)` / `oklch(0.42 0.008 55)`): Non-text decoration only.
+- **Hover** (`oklch(0.958 0.005 65)` / `oklch(0.215 0.007 55)`): Hover feedback for linked rows.
+
+### Accent
+- **Clay** (`oklch(0.585 0.125 42)` / `oklch(0.76 0.075 50)`): Hover underline and focus outline. At rest, underlines and selection use Clay mixed ~30% into the canvas.
 
 ### Named Rules
 
 **The Content-First Rule.** Color clarifies state and hierarchy; it does not decorate sections.
+
+**The Interaction-Only Accent Rule.** Clay appears only in response to the visitor (hover, focus, selection) or as a faint underline hint. Never as a fill, heading color, or badge.
 
 ## 3. Typography
 
@@ -130,9 +130,9 @@ The system is flat. Depth comes from tonal hover feedback and generous separatio
 
 ### Navigation
 - The header uses a 48px circular portrait, followed by 32px of space and a two-line identity block with the name in primary ink and the role in muted ink.
-- Text links inherit surrounding typography. Prose links use a 1px dotted underline with a 4px offset, then shift to primary ink with a solid underline on hover. Project rows use a full-row hover fill.
+- Text links inherit surrounding typography. Prose and footer links use a 2px solid underline with a 3px offset in a faint clay tint, which deepens to full Clay on hover while the text shifts to primary ink. Project rows use a full-row hover fill.
 - The footer presents Twitter, GitHub, and LinkedIn as muted, underlined links in a horizontal row with 32px between links and the standard section gap above it.
-- All interactive elements use a visible 2px neutral focus outline with a 2px offset.
+- All interactive elements use a visible 2px Clay focus outline with a 2px offset. Color transitions take 160ms with an ease-out-quart curve and are removed under reduced motion.
 
 ### Project Entry
 
