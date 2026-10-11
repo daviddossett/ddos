@@ -2,21 +2,24 @@
 name: "My portfolio"
 description: "A quiet, text-first portfolio for David Dossett."
 colors:
-  canvas: "oklch(0.985 0 0)"
-  canvas-dark: "oklch(0.145 0 0)"
-  ink: "oklch(0.205 0 0)"
-  ink-dark: "oklch(1 0 0 / 90%)"
-  muted: "oklch(0.439 0 0)"
-  muted-dark: "oklch(1 0 0 / 70%)"
-  tertiary: "oklch(0.556 0 0)"
-  tertiary-dark: "oklch(1 0 0 / 50%)"
-  quaternary: "oklch(0.708 0 0)"
-  quaternary-dark: "oklch(1 0 0 / 32%)"
-  metadata: "oklch(0.498 0 0)"
-  metadata-dark: "oklch(1 0 0 / 60%)"
-  hover: "oklch(0.97 0 0)"
-  hover-dark: "oklch(0.2 0 0)"
-  accent: "oklch(0.671 0.212 34.5)"
+  canvas: "oklch(1 0 0)"
+  canvas-dark: "oklch(0 0 0)"
+  ink: "oklch(0 0 0)"
+  ink-dark: "oklch(1 0 0)"
+  muted: "oklch(0.32 0 0)"
+  muted-dark: "oklch(0.82 0 0)"
+  metadata: "oklch(0.45 0 0)"
+  metadata-dark: "oklch(0.72 0 0)"
+  quaternary: "oklch(0.82 0 0)"
+  quaternary-dark: "oklch(0.36 0 0)"
+  rule: "oklch(0 0 0)"
+  rule-dark: "oklch(1 0 0)"
+  hover: "oklch(0 0 0)"
+  hover-dark: "oklch(1 0 0)"
+  hover-ink: "oklch(1 0 0)"
+  hover-ink-dark: "oklch(0 0 0)"
+  accent: "oklch(0.57 0.23 30)"
+  accent-dark: "oklch(0.68 0.22 33)"
 typography:
   title:
     fontFamily: "Sans, Sans Fallback, sans-serif"
@@ -35,7 +38,7 @@ typography:
     fontWeight: 500
     lineHeight: 1.5
 rounded:
-  interactive: "8px"
+  interactive: "0px"
 spacing:
   xs: "8px"
   sm: "12px"
@@ -51,7 +54,7 @@ components:
     padding: "12px"
   entry-hover:
     backgroundColor: "{colors.hover}"
-    textColor: "{colors.ink}"
+    textColor: "{colors.hover-ink}"
     rounded: "{rounded.interactive}"
     padding: "12px"
 ---
@@ -69,31 +72,31 @@ The system reads like a carefully maintained personal index: compact, direct, an
 - Tight groups separated by 96–128px pauses
 - Inter Variable with weight-led hierarchy
 - Flat surfaces with subtle hover fills only on actionable rows
-- Complete light and dark color modes
+- Complete light and dark color modes in true black and white with one vermilion signal
 
 ## 2. Colors
 
-The palette uses neutral light and dark ramps, with a single orange accent reserved for selection feedback. It preserves comfortable contrast without using pure white or pure black as the dominant canvas.
+**Ink & Signal.** True black and true white, a short high-contrast gray ramp, and one vermilion signal accent pushed from the original brand orange hue. Hierarchy comes from value contrast, not tint.
 
 ### Primary
-- **Quiet Ink** (`oklch(0.205 0 0)`): Primary text and interactive labels.
-- **Night Ink** (`oklch(1 0 0 / 90%)`): Primary text in dark mode.
+- **Ink** (`oklch(0 0 0)` / `oklch(1 0 0)`): Primary text, section rules, and the inverted hover fill.
+- **Canvas** (`oklch(1 0 0)` / `oklch(0 0 0)`): Page background.
 
 ### Neutral
-- **Soft Canvas** (`oklch(0.985 0 0)`): Light-mode page background.
-- **Night Canvas** (`oklch(0.145 0 0)`): Dark-mode page background.
-- **Secondary Graphite** (`oklch(0.439 0 0)`): Supporting copy in light mode.
-- **Secondary Silver** (`oklch(1 0 0 / 70%)`): Supporting copy in dark mode.
-- **Metadata Graphite** (`oklch(0.498 0 0)` / `oklch(1 0 0 / 60%)`): Project metadata and footer links, balanced between the secondary and tertiary tones.
-- **Tertiary Graphite** (`oklch(0.556 0 0)` / `oklch(1 0 0 / 50%)`): Available for subdued structure.
-- **Quaternary Graphite** (`oklch(0.708 0 0)` / `oklch(1 0 0 / 32%)`): Non-text decoration only because it does not meet this site's AA requirement at 16px.
-- **Quiet Hover** (`oklch(0.97 0 0)`): Hover feedback for linked rows.
-- **Night Hover** (`oklch(0.2 0 0)`): Dark-mode hover feedback.
-- **Brand Orange** (`oklch(0.671 0.212 34.5)`): Selection feedback only.
+- **Secondary Graphite** (`oklch(0.32 0 0)` / `oklch(0.82 0 0)`): Intro copy and role label. 12.7:1 / 12:1.
+- **Metadata Graphite** (`oklch(0.45 0 0)` / `oklch(0.72 0 0)`): Project and experience metadata, footer links. 7.4:1 / 8.5:1.
+- **Quaternary** (`oklch(0.82 0 0)` / `oklch(0.36 0 0)`): Non-text decoration only (resting footer underlines).
+
+### Accent
+- **Signal Vermilion** (`oklch(0.57 0.23 30)` / `oklch(0.68 0.22 33)`): Prose link underlines, focus rings, selection, and the full-stop mark after the name. Meets 4.5:1 against its canvas in both modes so it can carry text if needed.
 
 ### Named Rules
 
 **The Content-First Rule.** Color clarifies state and hierarchy; it does not decorate sections.
+
+**The One-Signal Rule.** Vermilion is the only hue on the page. Never introduce a second accent or tint the neutrals.
+
+**The Inversion Rule.** Interactive rows invert (ink fill, canvas text) on hover and keyboard focus instead of using a soft tonal fill.
 
 ## 3. Typography
 
@@ -103,7 +106,7 @@ The palette uses neutral light and dark ramps, with a single orange accent reser
 **Character:** Familiar platform typography keeps attention on the work. Weight, tone, and spacing create hierarchy instead of a separate display face.
 
 ### Hierarchy
-- **Title** (500, 1rem, 1.5): Name and section titles.
+- **Title** (650, 1rem, 1.5, -0.011em): Name and section titles.
 - **Body** (400, 1rem, 1.5): Descriptions and narrative copy, capped at the 692px page measure. Introductory prose uses 1.65 line-height.
 - **Label** (500, 1rem, 1.5): Section headings and role labels.
 
@@ -122,17 +125,17 @@ The system is flat. Depth comes from tonal hover feedback and generous separatio
 ## 5. Components
 
 ### Cards / Containers
-- **Corner Style:** Small interactive radius (8px), only on linked rows.
-- **Background:** Transparent at rest, quiet tonal fill on hover.
+- **Corner Style:** Square (0px). Crisp edges match the black/white system.
+- **Background:** Transparent at rest, full ink inversion on hover and focus.
 - **Shadow Strategy:** None.
 - **Border:** None.
 - **Internal Padding:** 12px on all sides at desktop sizes.
 
 ### Navigation
 - The header uses a 48px circular portrait, followed by 32px of space and a two-line identity block with the name in primary ink and the role in muted ink.
-- Text links inherit surrounding typography. Prose links use a 1px dotted underline with a 4px offset, then shift to primary ink with a solid underline on hover. Project rows use a full-row hover fill.
+- Text links inherit surrounding typography. Prose links are ink with a 2px vermilion underline at a 3px offset; it thickens to 3px on hover. Project rows invert on hover. Section titles sit under a 1px ink rule. The portrait is rendered in grayscale.
 - The footer presents Twitter, GitHub, and LinkedIn as muted, underlined links in a horizontal row with 32px between links and the standard section gap above it.
-- All interactive elements use a visible 2px neutral focus outline with a 2px offset.
+- All interactive elements use a visible 2px vermilion focus outline with a 2px offset.
 
 ### Project Entry
 
