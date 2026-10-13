@@ -103,6 +103,7 @@ a:focus-visible {
   position: sticky;
   top: 0;
   z-index: 20;
+  container-type: inline-size;
   background: var(--canvas);
   border-bottom: 1px solid var(--quaternary);
   font-feature-settings: "cv01", "ss03";
@@ -422,10 +423,22 @@ a:focus-visible {
   }
 
   .header-utility {
+    position: relative;
     display: block;
-    padding-block: 0.55rem 0.6rem;
+    padding-block: 0.7rem 0.75rem;
     border-top: 0;
+    border-bottom: 0;
+  }
+
+  .header-utility::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100cqw;
     border-bottom: 1px solid var(--quaternary);
+    transform: translateX(-50%);
+    pointer-events: none;
   }
 
   .header-brand {

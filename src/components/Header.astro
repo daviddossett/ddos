@@ -25,3 +25,14 @@
     </nav>
   </div>
 </header>
+
+<script>
+  const menu = document.querySelector("#header-menu");
+  if (menu instanceof HTMLInputElement) {
+    for (const link of document.querySelectorAll(".header-nav a")) {
+      link.addEventListener("click", () => {
+        menu.checked = false;
+      });
+    }
+  }
+</script>
