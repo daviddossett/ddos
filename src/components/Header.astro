@@ -1,13 +1,38 @@
 <header class="site-header">
-  <img
-    class="identity-avatar"
-    src="/images/david-avatar.webp"
-    alt=""
-    width="48"
-    height="48"
-    loading="eager"
-    fetchpriority="high"
-  />
-  <span class="identity-name">David Dossett</span>
-  <span class="identity-role">Product Designer</span>
+  <input class="header-menu-input" id="header-menu" type="checkbox" />
+  <div class="header-measure">
+    <p class="header-utility identity-role">Product Designer</p>
+    <a class="header-brand" href="/">
+      <img
+        class="identity-avatar"
+        src="/images/david-avatar.webp"
+        alt=""
+        width="40"
+        height="40"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <span class="identity-name">David Dossett</span>
+    </a>
+    <label class="header-toggle" for="header-menu">
+      <span class="header-toggle-closed">Menu</span>
+      <span class="header-toggle-open">Close</span>
+    </label>
+    <nav class="header-nav" aria-label="Primary">
+      <a href="#about-heading">About</a>
+      <a href="#projects-heading">Projects</a>
+      <a href="#experience-heading">Experience</a>
+    </nav>
+  </div>
 </header>
+
+<script>
+  const menu = document.querySelector("#header-menu");
+  if (menu instanceof HTMLInputElement) {
+    for (const link of document.querySelectorAll(".header-nav a")) {
+      link.addEventListener("click", () => {
+        menu.checked = false;
+      });
+    }
+  }
+</script>
