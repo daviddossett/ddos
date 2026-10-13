@@ -139,6 +139,7 @@ a:focus-visible {
 }
 
 .header-identity {
+  position: relative;
   display: flex;
   flex: 0 1 auto;
   align-items: baseline;
@@ -270,6 +271,20 @@ a:focus-visible {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (max-width: 22rem) {
+  .site-header .identity-role {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 }
 
 .section-title {
