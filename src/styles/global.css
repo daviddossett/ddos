@@ -129,7 +129,7 @@ a:focus-visible {
   z-index: 2;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   width: 100%;
   max-width: 692px;
   min-height: var(--header-bar-height);
@@ -141,7 +141,7 @@ a:focus-visible {
   display: flex;
   flex: 1 1 auto;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
   min-width: 0;
 }
 
@@ -154,8 +154,8 @@ a:focus-visible {
 .identity-avatar {
   display: block;
   flex: none;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -178,7 +178,7 @@ a:focus-visible {
   align-items: center;
   gap: 0.5rem;
   margin: 0 0 0 auto;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem;
   border: 0;
   border-radius: 0.5rem;
   background: transparent;
@@ -406,6 +406,16 @@ a:focus-visible {
 @media (min-width: 40rem) {
   .site-shell {
     padding-top: calc(var(--header-bar-height) + 4rem);
+  }
+
+  .site-header-inner,
+  .identity {
+    gap: 0.75rem;
+  }
+
+  .identity-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   .primary-nav {
