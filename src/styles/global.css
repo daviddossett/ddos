@@ -28,6 +28,8 @@
   --hover: oklch(0.97 0 0);
   --accent: oklch(0.671 0.212 34.5);
   --selection-ink: oklch(0.145 0 0);
+  --header-bar-height: 4.75rem;
+  --header-line: color-mix(in oklch, var(--ink) 14%, transparent);
   color-scheme: light dark;
 }
 
@@ -53,6 +55,7 @@
 
 html {
   min-height: 100%;
+  scroll-padding-top: calc(var(--header-bar-height) + 0.75rem);
   font-family: "Sans", "Sans Fallback", sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
@@ -65,6 +68,10 @@ body {
   color: var(--ink);
   background: var(--canvas);
   line-height: 1.5;
+}
+
+body.nav-open {
+  overflow: hidden;
 }
 
 a {
@@ -94,24 +101,179 @@ a:focus-visible {
   width: 100%;
   max-width: 692px;
   margin-inline: auto;
-  padding: 3rem 1.5rem 4rem;
+  padding: calc(var(--header-bar-height) + 2rem) 1.5rem 4rem;
   font-feature-settings: "cv01", "ss03";
 }
 
 .site-header {
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  right: 0;
+  left: 0;
+  color: var(--ink);
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.site-header.is-solid {
+  background-color: var(--canvas);
+  border-bottom-color: var(--header-line);
+}
+
+.site-header-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 692px;
+  min-height: var(--header-bar-height);
+  margin-inline: auto;
+  padding: 0.75rem 1.5rem;
+}
+
+.identity {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.identity-copy {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 8rem;
+  min-width: 0;
 }
 
 .identity-avatar {
   display: block;
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 2rem;
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.primary-nav {
+  display: none;
+  align-items: center;
+  gap: 1.25rem;
+  margin-left: auto;
+}
+
+.primary-nav a {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.menu-button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0 auto;
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 500;
+  line-height: 1.25;
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  background: var(--hover);
+}
+
+.menu-button:focus-visible {
+  outline: 2px solid var(--muted);
+  outline-offset: 2px;
+}
+
+.identity-name,
+.identity-role {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menu-glyph {
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.menu-glyph-close,
+.menu-label-close,
+.menu-button[aria-expanded="true"] .menu-glyph-open,
+.menu-button[aria-expanded="true"] .menu-label-open {
+  display: none;
+}
+
+.menu-button[aria-expanded="true"] .menu-glyph-close,
+.menu-button[aria-expanded="true"] .menu-label-close {
+  display: block;
+}
+
+.menu-button[aria-expanded="true"] .menu-label-close {
+  display: inline;
+}
+
+.nav-backdrop {
+  position: fixed;
+  z-index: 1;
+  inset: var(--header-bar-height) 0 0 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: color-mix(in oklch, var(--ink) 32%, transparent);
+  cursor: pointer;
+}
+
+.nav-drawer {
+  position: fixed;
+  z-index: 2;
+  top: var(--header-bar-height);
+  right: 0;
+  bottom: 0;
+  width: min(20rem, 100%);
+  padding: 0.75rem 1.5rem 1.5rem;
+  overflow: auto;
+  background: var(--canvas);
+  border-left: 1px solid var(--header-line);
+}
+
+.nav-backdrop[hidden],
+.nav-drawer[hidden] {
+  display: none;
+}
+
+.nav-drawer nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-drawer a {
+  margin-inline: -0.75rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-drawer a:hover {
+  background: var(--hover);
 }
 
 .identity-name,
@@ -135,6 +297,7 @@ a:focus-visible {
 
 .section-title {
   margin: 0 0 1.25rem;
+  scroll-margin-top: calc(var(--header-bar-height) + 0.75rem);
   color: var(--ink);
   font-weight: 500;
 }
@@ -242,7 +405,15 @@ a:focus-visible {
 
 @media (min-width: 40rem) {
   .site-shell {
-    padding-top: 8rem;
+    padding-top: calc(var(--header-bar-height) + 4rem);
+  }
+
+  .primary-nav {
+    display: flex;
+  }
+
+  .menu-button {
+    display: none;
   }
 
   .intro-phrase {
@@ -273,6 +444,12 @@ a:focus-visible {
 
 @media (min-width: 48rem) {
   .site-shell {
-    padding-top: 4rem;
+    padding-top: calc(var(--header-bar-height) + 2.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header {
+    transition: none;
   }
 }

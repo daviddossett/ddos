@@ -1,13 +1,138 @@
-<header class="site-header">
-  <img
-    class="identity-avatar"
-    src="/images/david-avatar.webp"
-    alt=""
-    width="48"
-    height="48"
-    loading="eager"
-    fetchpriority="high"
-  />
-  <span class="identity-name">David Dossett</span>
-  <span class="identity-role">Product Designer</span>
+<header class="site-header" data-site-header>
+  <div class="site-header-inner">
+    <div class="identity">
+      <img
+        class="identity-avatar"
+        src="/images/david-avatar.webp"
+        alt=""
+        width="40"
+        height="40"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <span class="identity-copy">
+        <span class="identity-name">David Dossett</span>
+        <span class="identity-role">Product Designer</span>
+      </span>
+    </div>
+
+    <nav class="primary-nav" aria-label="Primary">
+      <a href="#about-heading">About</a>
+      <a href="#projects-heading">Projects</a>
+      <a href="#experience-heading">Experience</a>
+    </nav>
+
+    <button
+      class="menu-button"
+      type="button"
+      data-menu-toggle
+      aria-expanded="false"
+      aria-controls="primary-drawer"
+    >
+      <svg class="menu-glyph menu-glyph-open" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+        <path d="M2.5 4.25h11M2.5 8h11M2.5 11.75h11"></path>
+      </svg>
+      <svg class="menu-glyph menu-glyph-close" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+        <path d="M4 4l8 8M12 4l-8 8"></path>
+      </svg>
+      <span class="menu-label-open">Menu</span>
+      <span class="menu-label-close">Close</span>
+    </button>
+  </div>
+
+  <button
+    class="nav-backdrop"
+    type="button"
+    data-menu-backdrop
+    hidden
+    aria-label="Close menu"
+  ></button>
+
+  <div id="primary-drawer" class="nav-drawer" data-menu-drawer hidden>
+    <nav aria-label="Primary">
+      <a href="#about-heading">About</a>
+      <a href="#projects-heading">Projects</a>
+      <a href="#experience-heading">Experience</a>
+    </nav>
+  </div>
 </header>
+
+<script is:inline>
+  const header = document.querySelector("[data-site-header]");
+  const toggle = header?.querySelector("[data-menu-toggle]");
+  const drawer = header?.querySelector("[data-menu-drawer]");
+  const backdrop = header?.querySelector("[data-menu-backdrop]");
+  const desktop = window.matchMedia("(min-width: 40rem)");
+
+  const setSolid = () => {
+    header?.classList.toggle("is-solid", window.scrollY > 12);
+  };
+
+  const drawerItems = () =>
+    drawer
+      ? [...drawer.querySelectorAll("a, button")].filter(
+          (node) => node instanceof HTMLElement,
+        )
+      : [];
+
+  const setOpen = (open, restoreFocus = false) => {
+    if (!(toggle instanceof HTMLButtonElement) || !(drawer instanceof HTMLElement)) {
+      return;
+    }
+
+    toggle.setAttribute("aria-expanded", String(open));
+    drawer.hidden = !open;
+    if (backdrop instanceof HTMLElement) backdrop.hidden = !open;
+    document.body.classList.toggle("nav-open", open);
+
+    if (open) {
+      drawerItems()[0]?.focus();
+    } else if (restoreFocus) {
+      toggle.focus();
+    }
+  };
+
+  setSolid();
+  window.addEventListener("scroll", setSolid, { passive: true });
+
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    setOpen(!open, open);
+  });
+
+  backdrop?.addEventListener("click", () => setOpen(false, true));
+
+  drawer?.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target instanceof Element && target.closest("a")) setOpen(false, false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!(toggle instanceof HTMLButtonElement)) return;
+    if (toggle.getAttribute("aria-expanded") !== "true") return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setOpen(false, true);
+      return;
+    }
+
+    if (event.key !== "Tab") return;
+    const items = drawerItems();
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (!first || !last) return;
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
+  desktop.addEventListener("change", (event) => {
+    if (event.matches) setOpen(false, false);
+  });
+</script>
