@@ -1,13 +1,104 @@
 <header class="site-header">
-  <img
-    class="identity-avatar"
-    src="/images/david-avatar.webp"
-    alt=""
-    width="48"
-    height="48"
-    loading="eager"
-    fetchpriority="high"
-  />
-  <span class="identity-name">David Dossett</span>
-  <span class="identity-role">Product Designer</span>
+  <div class="site-header-bar">
+    <a class="header-brand" href="/">
+      <img
+        class="identity-avatar"
+        src="/images/david-avatar.webp"
+        alt=""
+        width="24"
+        height="24"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <span class="header-identity">
+        <span class="identity-name">David Dossett</span>
+        <span class="identity-role">Product Designer</span>
+      </span>
+    </a>
+    <nav class="header-nav" aria-label="Primary">
+      <a href="#about-heading">About</a>
+      <a href="#projects-heading">Projects</a>
+      <a href="#experience-heading">Experience</a>
+    </nav>
+    <a
+      class="header-cta"
+      href="https://www.linkedin.com/in/davidcdossett/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      LinkedIn
+    </a>
+    <button
+      type="button"
+      class="header-menu-button"
+      aria-expanded="false"
+      aria-controls="header-menu"
+    >
+      Menu
+    </button>
+  </div>
+  <div id="header-menu" class="header-menu" hidden>
+    <nav class="header-menu-nav" aria-label="Primary">
+      <a href="#about-heading">About</a>
+      <a href="#projects-heading">Projects</a>
+      <a href="#experience-heading">Experience</a>
+      <a
+        class="header-cta"
+        href="https://www.linkedin.com/in/davidcdossett/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LinkedIn
+      </a>
+    </nav>
+  </div>
 </header>
+
+<script>
+  const header = document.querySelector(".site-header");
+
+  if (header instanceof HTMLElement) {
+    const syncShadow = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 0);
+    };
+
+    syncShadow();
+    window.addEventListener("scroll", syncShadow, { passive: true });
+
+    const button = header.querySelector(".header-menu-button");
+    const menu = header.querySelector("#header-menu");
+
+    if (button instanceof HTMLButtonElement && menu instanceof HTMLElement) {
+      const setOpen = (open: boolean) => {
+        button.setAttribute("aria-expanded", String(open));
+        button.textContent = open ? "Close" : "Menu";
+        menu.hidden = !open;
+      };
+
+      button.addEventListener("click", () => {
+        setOpen(button.getAttribute("aria-expanded") !== "true");
+      });
+
+      menu.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target instanceof Element && target.closest("a")) setOpen(false);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") setOpen(false);
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!(event.target instanceof Node) || header.contains(event.target)) {
+          return;
+        }
+        setOpen(false);
+      });
+
+      const desktop = window.matchMedia("(min-width: 40rem)");
+      desktop.addEventListener("change", () => {
+        if (desktop.matches) setOpen(false);
+      });
+    }
+  }
+</script>
