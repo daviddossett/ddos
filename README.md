@@ -1,11 +1,33 @@
-David Dossett's personal website, built with Astro and deployed as a static site.
+# Welcome! 👋
 
-## Development
+Thanks for stopping by! This is the home of David Dossett's personal website, built with [Astro](https://astro.build) and deployed as a static site.
 
-```sh
-npm install
-npm run dev
-```
+Whether you're here to poke around the code, borrow an idea, or fix a typo, you're very welcome.
 
-Run `npm run lint` to check the project and `npm run build` to create the
-production site in `dist/`.
+## Getting started
+
+It only takes a minute to get the site running on your own machine.
+
+1. Install the dependencies:
+
+   ```sh
+   npm install
+   ```
+
+2. Start the development server:
+
+   ```sh
+   npm run dev
+   ```
+
+3. Open the local address printed in your terminal, and you're up and running!
+
+## Handy commands
+
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Starts the dev server so you can see changes as you make them |
+| `npm run lint` | Checks the project for any issues |
+| `npm run build` | Creates the production site in `dist/` |
+
+Happy building! 🎉
