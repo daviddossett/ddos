@@ -1,11 +1,12 @@
-David Dossett's personal website, built with Astro and deployed as a static site.
+# ddossett.com
 
-## Development
+David Dossett's personal website. Built with [Astro](https://astro.build), deployed as a static site.
 
 ```sh
 npm install
-npm run dev
+npm run dev      # start dev server
+npm run lint     # astro check
+npm run build    # build to dist/
 ```
 
-Run `npm run lint` to check the project and `npm run build` to create the
-production site in `dist/`.
+See [PRODUCT.md](PRODUCT.md) and [DESIGN.md](DESIGN.md) for context.
