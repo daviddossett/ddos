@@ -1,4 +1,6 @@
-David Dossett's personal website, built with Astro and deployed as a static site.
+Hi there! 👋 This is the home of David Dossett's personal website. It's built
+with Astro and ships as a simple static site, so getting it running locally
+only takes a minute.
 
 ## Development
 
