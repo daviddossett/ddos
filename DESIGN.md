@@ -16,7 +16,7 @@ colors:
   metadata-dark: "oklch(1 0 0 / 60%)"
   hover: "oklch(0.97 0 0)"
   hover-dark: "oklch(0.2 0 0)"
-  accent: "oklch(0.671 0.212 34.5)"
+  accent: "oklch(0.623 0.214 259.8)"
 typography:
   title:
     fontFamily: "Sans, Sans Fallback, sans-serif"
@@ -73,7 +73,7 @@ The system reads like a carefully maintained personal index: compact, direct, an
 
 ## 2. Colors
 
-The palette uses neutral light and dark ramps, with a single orange accent reserved for selection feedback. It preserves comfortable contrast without using pure white or pure black as the dominant canvas.
+The palette uses neutral light and dark ramps, with a single blue accent reserved for selection feedback. It preserves comfortable contrast without using pure white or pure black as the dominant canvas.
 
 ### Primary
 - **Quiet Ink** (`oklch(0.205 0 0)`): Primary text and interactive labels.
@@ -89,7 +89,7 @@ The palette uses neutral light and dark ramps, with a single orange accent reser
 - **Quaternary Graphite** (`oklch(0.708 0 0)` / `oklch(1 0 0 / 32%)`): Non-text decoration only because it does not meet this site's AA requirement at 16px.
 - **Quiet Hover** (`oklch(0.97 0 0)`): Hover feedback for linked rows.
 - **Night Hover** (`oklch(0.2 0 0)`): Dark-mode hover feedback.
-- **Brand Orange** (`oklch(0.671 0.212 34.5)`): Selection feedback only.
+- **Brand Blue** (`oklch(0.623 0.214 259.8)`): Selection feedback only.
 
 ### Named Rules
 
